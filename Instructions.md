@@ -5,6 +5,7 @@ INSTALLATION
 3. npm install react-router-dom
 4. npm install sass
 5. npm install firebase
+6. npm install mobx
 
 
 GIT FORK
