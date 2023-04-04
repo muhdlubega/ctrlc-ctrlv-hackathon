@@ -21,6 +21,9 @@ GIT PUSH
 3. git commit -m "message"
 4. git push origin [name of branch] (PUSH IN A DIFFERENT BRANCH NOT MAIN, ASK JIM)
 
+GIT PULL
+
+1. git pull origin master
 
 GIT UPDATE
 

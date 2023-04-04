@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+const LazyHomePage = lazy(() => import("./Components/Pages/HomePage/HomePage"));
+const LazyDetails = lazy(() => import("./Components/Pages/Details/Details"));
+const LazyAbout = lazy(() => import("./Components/Pages/About/About"));
+const LazyGenres = lazy(() => import("./Components/Pages/Genres/Genres"));
+const LazyGenreGames = lazy(() => import("./Components/Pages/GenreGames/GenreGames"));
+const LazyAccount = lazy(() => import("./Components/Pages/Account/Account"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Wassup
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Suspense fallback={<div>Loading....</div>}><LazyHomePage /></Suspense>}></Route>
+        <Route path="/details/:id" element={<Suspense fallback={<div>Loading....</div>}><LazyDetails /></Suspense>}></Route>
+        <Route path="/about" element={<Suspense fallback={<div>Loading....</div>}><LazyAbout /></Suspense>}></Route>
+        <Route path="/genres" element={<Suspense fallback={<div>Loading....</div>}><LazyGenres /></Suspense>}></Route>
+        <Route path="/genres/:id" element={<Suspense fallback={<div>Loading....</div>}><LazyGenreGames /></Suspense>}></Route>
+        <Route path="/account" element={<Suspense fallback={<div>Loading....</div>}><LazyAccount /></Suspense>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
