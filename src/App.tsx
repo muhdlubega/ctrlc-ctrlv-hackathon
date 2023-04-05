@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Layout } from './Components/Layout/Layout';
+import AppWrapper from './Components/AppWrapper/AppWrapper';
 
 const LazyHomePage = lazy(() => import("./Components/Pages/HomePage/HomePage"));
 const LazyDetails = lazy(() => import("./Components/Pages/Details/Details"));
@@ -11,6 +13,8 @@ const LazyAccount = lazy(() => import("./Components/Pages/Account/Account"));
 function App() {
   return (
     <BrowserRouter>
+    <AppWrapper>
+    <Layout>
       <Routes>
         <Route path="/" element={<Suspense fallback={<div>Loading....</div>}><LazyHomePage /></Suspense>}></Route>
         <Route path="/details/:id" element={<Suspense fallback={<div>Loading....</div>}><LazyDetails /></Suspense>}></Route>
@@ -19,6 +23,8 @@ function App() {
         <Route path="/genres/:id" element={<Suspense fallback={<div>Loading....</div>}><LazyGenreGames /></Suspense>}></Route>
         <Route path="/account" element={<Suspense fallback={<div>Loading....</div>}><LazyAccount /></Suspense>}></Route>
       </Routes>
+      </Layout>
+      </AppWrapper>
     </BrowserRouter>
   );
 }
