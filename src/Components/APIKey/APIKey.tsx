@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type Query = {
+export type Query = {
   id?: number;
   page?: number;
   genre_id?: number;
