@@ -1,5 +1,3 @@
-
-
 .game-image{
     display:inline-block;
     height: 125px;
@@ -36,3 +34,17 @@
   @media (min-width: 2800px) {
     .content { grid-template-columns: repeat(8, 1fr); }
   }
+.nav {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.topic{
+  font-family: sans-serif;
+}
