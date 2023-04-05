@@ -1,8 +1,13 @@
 import React from 'react'
+import Games from './Games'
 
-const HomePage = () => {
+function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+      <div>
+        <Games></Games>
+      </div>
+    </div>
   )
 }
 

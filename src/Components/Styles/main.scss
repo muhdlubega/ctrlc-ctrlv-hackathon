@@ -1,0 +1,38 @@
+
+
+.game-image{
+    display:inline-block;
+    height: 125px;
+    width: 225px;
+    cursor: pointer;
+    padding: 10px;
+}
+.game-image:hover{
+    transform: scale(2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.game-name{
+    color:#0000;
+}
+.content{
+    max-width:100%;
+    text-align:center;
+    margin: 30px;
+    padding: 0;
+    flex: 1;
+    color: #0000;
+    display: grid;
+    grid-gap: 1fr;
+}
+@media (min-width: 0px) {
+    .content { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1200) {
+    .content { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 1800px) {
+    .content { grid-template-columns: repeat(5, 1fr); }
+  }
+  @media (min-width: 2800px) {
+    .content { grid-template-columns: repeat(8, 1fr); }
+  }
