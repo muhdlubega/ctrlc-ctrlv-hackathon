@@ -36,36 +36,76 @@
     .content { grid-template-columns: repeat(8, 1fr); }
   }
 
+  .auth-button {
+    background-color: #a404b3;
+    border: 5px solid white;
+    color: black;
+    font-family: VT323;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .auth-content {
+      position: relative;
+      width: 50%;
+      background-color: #1E1D1D;
+      color: white;
+      box-shadow: inset 1px 1px 5px #a404b3;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+.nav {
+  display: flex;
+    justify-content: space-around;
+    background-color: #000000;
+    height: 5rem;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            font-size: 1.8rem;
+        }
+      }
+
+      h2{
+
+        a{
+          color: #f2f1ef;
+          text-decoration: none;
+  
+            &:hover {
+              font-size:30px;
+              transition: all 500ms;
+  
+            }
+        }
+        
+      }
+  
+    }
+
 
   .layout {
     background-color: #22161c;
 }
-  
-  .nav {
-    
-    display: flex;
-    justify-content: space-around;
-    background-color: #000000;
-    height: 5rem;
-
-    h2{
-
-      a{
-        color: #f2f1ef;
-        text-decoration: none;
-
-          &:hover {
-            font-size:30px;
-            transition: all 500ms;
-
-          }
-      }
       
-    }
-
-      
-}
-
 .header {
 
   &-div {
@@ -102,3 +142,37 @@
 .sort-select{
   display: flex;
 }
+
+  .auth-button {
+    background-color: #a404b3;
+    border: 5px solid white;
+    color: black;
+    font-family: VT323;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .auth-content {
+      position: relative;
+      width: 50%;
+      background-color: #1E1D1D;
+      color: white;
+      box-shadow: inset 1px 1px 5px #a404b3;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }  
