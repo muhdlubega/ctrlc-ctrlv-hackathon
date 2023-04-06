@@ -1,61 +1,15 @@
-// // import React from 'react'
-
-// // const About = () => {
-// //   return (
-// //     <div>About</div>
-// //   )
-// // }
-
-// // export default About
-
-
-// function About() {
-//   const teamMembers = [
-//     {
-//       name: "Farhah",
-//       position: "CEO",
-//       profilePicture: "",
-//       // profilePicture: "/john-smith.jpg",
-//     },
-//     {
-//       name: "Lubega",
-//       position: "",
-//       profilePicture: "",
-//     },
-//     {
-//       name: "Prem",
-//       position: "",
-//       profilePicture: "",
-//     },
-//     {
-//       name: "Ikmal",
-//       position: "",
-//       profilePicture: "",
-//     },
-//     {
-//       name: "Yuva",
-//       position: "",
-//       profilePicture: "",
-//     },
-//   ];
-
-//   return (
-//     <div>
-//       <About teamMembers={teamMembers} />
-//     </div>
-//   );
-// }
-
-// export default About;
-
 import React from 'react';
+import FarhahPic from '../../../Assets/images/FarhahVG.png';
+import BegaPic from '../../../Assets/images/BegaVG.png';
+import PremPic from '../../../Assets/images/PremVG.png';
+import IkmalPic from '../../../Assets/images/IkmalVG.png';
+import YuvaPic from '../../../Assets/images/YuvaVG.png';
 
 function About() {
 
   return (
     <>
-      <h2>Responsive "Meet The Team" Section</h2>
-      <p>Resize the browser window to see the effect.</p>
+      <h2>Meet The Team</h2>
       <br />
 
       <div style={{ 
@@ -73,7 +27,7 @@ function About() {
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)'
       }}>
 
-      <img src="/w3images/team1.jpg" alt="Farhah" style={{ width: '100%' }} />
+      <img src={FarhahPic} style={{ width: '100%' }} />
       <div style={{ padding: '0 16px' }}>
         <h2>Farhah Nizam</h2>
           <p style={{ color: 'grey' }}>CEO & Founder</p>
@@ -100,7 +54,7 @@ function About() {
         marginBottom: '16px',
         padding: '0 8px' }}>
       <div style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)' }}>
-      <img src="/w3images/team2.jpg" alt="Lubega" style={{ width: '100%' }} />
+      <img src={BegaPic} style={{ width: '100%' }} />
       <div style={{ padding: '0 16px' }}>
       <h2>Lubega</h2>
         <p style={{ color: 'grey' }}>Art Director</p>
@@ -126,7 +80,7 @@ function About() {
         marginBottom: '16px',
         padding: '0 8px' }}>
       <div style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)' }}>
-      <img src="/w3images/team2.jpg" alt="Prem" style={{ width: '100%' }} />
+      <img src={PremPic} style={{ width: '100%' }} />
       <div style={{ padding: '0 16px' }}>
       <h2>Prem</h2>
         <p style={{ color: 'grey' }}>Art Director</p>
@@ -152,7 +106,7 @@ function About() {
         marginBottom: '16px',
         padding: '0 8px' }}>
       <div style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)' }}>
-      <img src="/w3images/team2.jpg" alt="Ikmal" style={{ width: '100%' }} />
+      <img src={IkmalPic} style={{ width: '100%' }} />
       <div style={{ padding: '0 16px' }}>
       <h2>Ikmal</h2>
         <p style={{ color: 'grey' }}>Art Director</p>
@@ -179,7 +133,7 @@ function About() {
         padding: '0 8px'
       }}>
       <div style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)' }}>
-      <img src="/w3images/team2.jpg" alt="Yuva" style={{ width: '100%' }} />
+      <img src={YuvaPic} style={{ width: '100%' }} />
       <div style={{ padding: '0 16px' }}>
         <h2>Yuva</h2>
           <p style={{ color: 'grey' }}>Art Director</p>
@@ -197,6 +151,33 @@ function About() {
         width: '100%' }}>Contact</button>
       </div>
       </div>
+      </div>
+
+      <h2>About Us</h2>
+
+      <div style={{ padding: '0 16px' }}>
+        <p>We are a team of passionate designers
+          and developers who love creating beautiful
+          and functional video game websites.
+          Our mission is to be the very best like no one ever was.</p>
+      <br />
+
+      <h2>Build on RAWG API</h2>
+        <p>Build on the ultimate gameplay resource, the RAWG API! It has over 350,000
+          games for 50 platforms and is the largest open video game database.
+          Explore rich information like tags, genres, and more.
+          Get links to digital distribution platforms,
+          player activity data, and similar games based on visual similarity.
+          RAWG continually grows thanks to user contributions and algorithms,
+          making it the perfect tool for game developers and enthusiasts</p>
+      <br />
+
+      <h2>Terms of Use</h2>
+        <p>Free use of RAWG data or pictures!
+          Send us recognition and include a link.
+          Startups and hobby projects can also use it professionally if they have fewer than 100k users or 500k page views.
+          Don't try to imitate us, though.
+          Do you need assistance? Contact us at api@rawg.io</p>
       </div>
       </>
     )}
