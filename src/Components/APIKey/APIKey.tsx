@@ -110,31 +110,31 @@ export const getSortDateLow = ({page}: Query) => {
 
 
 //API Keys for game details endpoints
-export const getGamesDetails = ({id}: Id) => {
+export const getGamesDetails = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesAwards = ({id}: Id) => {
+export const getGamesAwards = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/achievements?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesTrailer = ({id}: Id) => {
+export const getGamesTrailer = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/movies?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesAdditions = ({id}: Id) => {
+export const getGamesAdditions = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/additions?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesStores = ({id}: Id) => {
+export const getGamesStores = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/stores?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesComment = ({id}: Id) => {
+export const getGamesComment = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/reddit?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesSuggestions = ({id}: Id) => {
+export const getGamesSuggestions = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/suggested?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
