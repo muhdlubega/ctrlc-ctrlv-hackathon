@@ -25,10 +25,10 @@ const SearchResults = () => {
   };
 
   return (
-    <div className="game-list-container">
+    <div className="game-name">
       <div className="search-query">Showing results for "{searchQuery}"</div>
 
-      <div className="game-list">
+      <div className="content">
         {searchResults.map((game: GameItem) => (
           <div
             className="game-item"
