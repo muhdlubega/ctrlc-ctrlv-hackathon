@@ -1,8 +1,17 @@
 import axios from "axios";
 
+export type Id = {
+  id: number;
+}
+
+export type GenreId = {
+genre_id: number
+}
+
 export type Query = {
   id?: number;
   page?: number;
+  page_size?:number;
   genre_id?: number;
   search?: string;
   rating?: number;
@@ -24,7 +33,7 @@ export const getGamesPages = ({page}: Query) => {
 
 //API Keys for searching functionalities
 export const getGamesSearch = ({search}: Query) => {
-  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=20&search=${search}`);
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=40&search=${search}`);
 }
 
 
@@ -51,6 +60,14 @@ export const getFilterDeveloper = ({page,developer}: Query) => {
 
 
 //API Keys for sorting functionalities
+export const getSortPopularityHigh = ({page}: Query) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-popularity&page=${page}&page_size=40`);
+}
+
+export const getSortPopularityLow = ({page}: Query) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=popularity&page=${page}&page_size=40`);
+}
+
 export const getSortAlphabeticalHigh = ({page}: Query) => {
   return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-name&page=${page}&page_size=40`);
 }
@@ -93,31 +110,31 @@ export const getSortDateLow = ({page}: Query) => {
 
 
 //API Keys for game details endpoints
-export const getGamesDetails = ({id}: Query) => {
+export const getGamesDetails = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesAwards = ({id}: Query) => {
+export const getGamesAwards = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/achievements?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesTrailer = ({id}: Query) => {
+export const getGamesTrailer = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/movies?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesAdditions = ({id}: Query) => {
+export const getGamesAdditions = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/additions?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesStores = ({id}: Query) => {
+export const getGamesStores = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/stores?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesComment = ({id}: Query) => {
+export const getGamesComment = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/reddit?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesSuggestions = ({id}: Query) => {
+export const getGamesSuggestions = ({id}: Id) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/suggested?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
@@ -127,9 +144,57 @@ export const getGenres = () => {
   return axios.get("https://api.rawg.io/api/genres?key=bc29961cd2654dd9a9ce173f3fb160bc");
 }
 
-export const getGenreGames = ({page,genre_id}: Query) => {
-  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=40&page=${page}&genres=${genre_id}`);
+// export const getGenreGames = ({page}:Query, id:string) => {
+//   return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=40&page=${page}&genres=${id}`);
+// }
+export const getGenreSortPopularityHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-popularity&page=${page}&page_size=40&genres=${id}`);
 }
+
+export const getGenreSortPopularityLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=popularity&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortAlphabeticalHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-name&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortAlphabeticalLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=name&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortRatingHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-rating&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortRatingLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=rating&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortMetaHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-metacritic&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortMetaLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=metacritic&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortReleaseHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-released&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortReleaseLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=released&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortDateHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-created&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortDateLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=created&page=${page}&page_size=40&genres=${id}`);
+}
+
 
 
 //API Keys for various uses
