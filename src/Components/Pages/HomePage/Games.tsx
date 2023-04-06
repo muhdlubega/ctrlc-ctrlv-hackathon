@@ -5,6 +5,7 @@ getSortReleaseHigh, getSortReleaseLow, getSortDateHigh, getSortDateLow } from '.
 import '../../Styles/main.scss';
 import { useNavigate } from 'react-router-dom';
 
+
 interface GameItem {
   name: string;
   background_image: string;
