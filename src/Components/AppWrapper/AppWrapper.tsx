@@ -1,7 +1,6 @@
-const AppWrapper = ({ children }) => {
+const AppWrapper = () => {
     return (
         <div className="app-wrapper">
-            {children}
         </div>
     )
 }

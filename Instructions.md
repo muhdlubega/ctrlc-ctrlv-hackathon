@@ -34,3 +34,9 @@ GIT UPDATE
 4. git branch -M main
 5. git remote add origin git@github.com:muhdlubega/ctrlc-ctrlv-hackathon.git
 6. git push -u origin main
+
+GIT STASH
+
+1. git stash
+2. git stash -list
+3. git stash pop
