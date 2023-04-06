@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { ReactNode } from 'react';
 import Navbar from '../Navbar/Navbar'
+import Header from '../Header/Header';
 
-export const Layout = ({}) => {
-  return (
-    <div className="layout">
-            <Navbar />
-        </div>
-  )
+
+type Props = {
+  children: ReactNode;
 }
 
+export const Layout = ({ children }: Props) => {
+  return (
+    <div className="layout">
+      <Navbar />
+      <Header />
+      {children}
+    </div>
+  );
+};
+
 export default Layout;
+
