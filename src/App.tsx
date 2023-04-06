@@ -14,6 +14,8 @@ const LazySearch = lazy(() => import("./Components/Pages/Search/SearchResults"))
 function App() {
   return (
     <BrowserRouter>
+    <AppWrapper>
+      <Layout>
       <Routes>
         <Route path="/" element={<Suspense fallback={<div>Loading....</div>}><LazyHomePage /></Suspense>}></Route>
         <Route path="/details/:id" element={<Suspense fallback={<div>Loading....</div>}><LazyDetails /></Suspense>}></Route>
@@ -23,6 +25,8 @@ function App() {
         <Route path="/account" element={<Suspense fallback={<div>Loading....</div>}><LazyAccount /></Suspense>}></Route>
         <Route path="/search/:searchQuery" element={<Suspense fallback={<div>Loading....</div>}><LazySearch /></Suspense>}/>
       </Routes>
+      </Layout>
+      </AppWrapper>
     </BrowserRouter>
   );
 }
