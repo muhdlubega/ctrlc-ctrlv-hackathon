@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './Components/Layout/Layout';
 import AppWrapper from './Components/AppWrapper/AppWrapper';
+import Footer from './Components/Footer/Footer';
 
 const LazyHomePage = lazy(() => import("./Components/Pages/HomePage/HomePage"));
 const LazyDetails = lazy(() => import("./Components/Pages/Details/Details"));
@@ -25,6 +26,7 @@ function App() {
         <Route path="/account" element={<Suspense fallback={<div>Loading....</div>}><LazyAccount /></Suspense>}></Route>
         <Route path="/search/:searchQuery" element={<Suspense fallback={<div>Loading....</div>}><LazySearch /></Suspense>}/>
       </Routes>
+      <Footer></Footer>
       </Layout>
       </AppWrapper>
     </BrowserRouter>
