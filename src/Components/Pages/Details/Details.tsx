@@ -132,6 +132,8 @@ function Details() {
       </table>
     </div>
   );
+
+  
 }
 
 export default Details;
