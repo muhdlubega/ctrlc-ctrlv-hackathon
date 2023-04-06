@@ -5,7 +5,7 @@ export type Id = {
 }
 
 export type GenreId = {
-genre_id: number;
+genre_id: number
 }
 
 export type Query = {
@@ -144,9 +144,57 @@ export const getGenres = () => {
   return axios.get("https://api.rawg.io/api/genres?key=bc29961cd2654dd9a9ce173f3fb160bc");
 }
 
-export const getGenreGames = ({page}:Query, {genre_id}:GenreId) => {
-  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=40&page=${page}&genres=${genre_id}`);
+// export const getGenreGames = ({page}:Query, id:string) => {
+//   return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=40&page=${page}&genres=${id}`);
+// }
+export const getGenreSortPopularityHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-popularity&page=${page}&page_size=40&genres=${id}`);
 }
+
+export const getGenreSortPopularityLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=popularity&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortAlphabeticalHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-name&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortAlphabeticalLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=name&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortRatingHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-rating&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortRatingLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=rating&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortMetaHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-metacritic&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortMetaLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=metacritic&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortReleaseHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-released&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortReleaseLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=released&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortDateHigh = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-created&page=${page}&page_size=40&genres=${id}`);
+}
+
+export const getGenreSortDateLow = ({page}: Query, id:string) => {
+  return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=created&page=${page}&page_size=40&genres=${id}`);
+}
+
 
 
 //API Keys for various uses

@@ -11,5 +11,4 @@ type Props = {
       </div>
     );
   };
-
 export default AppWrapper;
