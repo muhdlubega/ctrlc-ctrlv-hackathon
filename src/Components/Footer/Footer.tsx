@@ -14,7 +14,7 @@ const Footer = () => {
         <div className='footer-center'>
           <ul className='footer-list'>
             <li><Link to='/' >Home</Link></li>
-            <li><Link to='/genre'>Genres</Link></li>
+            <li><Link to='/genres'>Genres</Link></li>
             <li><Link to='/about'>About</Link></li>
             <li><Link to='/account'>Account</Link></li>
           </ul>

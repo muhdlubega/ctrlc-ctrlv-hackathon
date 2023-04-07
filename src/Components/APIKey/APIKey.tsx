@@ -130,12 +130,8 @@ export const getGamesStores = (id: string) => {
   return axios.get(`https://api.rawg.io/api/games/${id}/stores?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
-export const getGamesComment = (id: string) => {
-  return axios.get(`https://api.rawg.io/api/games/${id}/reddit?key=bc29961cd2654dd9a9ce173f3fb160bc`);
-}
-
-export const getGamesSuggestions = (id: string) => {
-  return axios.get(`https://api.rawg.io/api/games/${id}/suggested?key=bc29961cd2654dd9a9ce173f3fb160bc`);
+export const getGamesScreenshots = (id: string) => {
+  return axios.get(`https://api.rawg.io/api/games/${id}/screenshots?key=bc29961cd2654dd9a9ce173f3fb160bc`);
 }
 
 
@@ -144,9 +140,6 @@ export const getGenres = () => {
   return axios.get("https://api.rawg.io/api/genres?key=bc29961cd2654dd9a9ce173f3fb160bc");
 }
 
-// export const getGenreGames = ({page}:Query, id:string) => {
-//   return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&page_size=40&page=${page}&genres=${id}`);
-// }
 export const getGenreSortPopularityHigh = ({page}: Query, id:string) => {
   return axios.get(`https://api.rawg.io/api/games?key=bc29961cd2654dd9a9ce173f3fb160bc&ordering=-popularity&page=${page}&page_size=40&genres=${id}`);
 }

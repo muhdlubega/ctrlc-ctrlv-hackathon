@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const fadeStart = 500; // Start fading out 100 pixels from the top
 const fadeEnd = 1000; // Completely faded out at 500 pixels from the top
@@ -22,11 +23,12 @@ const handleScroll = () => {
 window.addEventListener('scroll', handleScroll);
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <span className='header-div'>
       <div className='header-content'>
-      <h1 className='header-title'>VISUAL GAMER</h1>
+      <h1 className='header-title' onClick={()=>{navigate("/")}}>VISUAL GAMER</h1>
       <h3 className='header-text'>Level up your gaming experience with Visual Gamer</h3>
       </div>
       <div className="scroll-down-container">

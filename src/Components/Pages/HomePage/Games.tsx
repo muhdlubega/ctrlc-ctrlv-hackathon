@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getSortPopularityHigh, getSortPopularityLow, getSortAlphabeticalHigh, getSortAlphabeticalLow, 
+import { getGamesSearch,getSortPopularityHigh, getSortPopularityLow, getSortAlphabeticalHigh, getSortAlphabeticalLow, 
 getSortRatingHigh, getSortRatingLow, getSortMetaHigh, getSortMetaLow,
 getSortReleaseHigh, getSortReleaseLow, getSortDateHigh, getSortDateLow } from '../../APIKey/APIKey';
 import '../../Styles/main.scss';
@@ -29,9 +29,11 @@ enum SortMethod {
 
 function Games() {
   const [gamesArray, setGamesArray] = useState<GameItem[]>([]);
-  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortMethod, setSortMethod] = useState<SortMethod>(SortMethod.PopularityHigh);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResults, setSearchResults] = useState<GameItem[]>([]);
+  const navigate = useNavigate();
 
   const getGamesNames = () => {
     let promise;
@@ -80,6 +82,17 @@ function Games() {
     })
   }
 
+  const getSearchItem = () => {
+    getGamesSearch({ search: searchInput }).then((output) => {
+      setSearchResults(output?.data?.results);
+    });
+  };
+
+  const handleSearch = () => {
+    getSearchItem();
+    navigate(`/search/${searchInput}`);
+  };
+
   const handleLoadMore = () => {
     setCurrentPage(currentPage + 1);
     getGamesNames();
@@ -98,7 +111,8 @@ function Games() {
 
   return (
     <div>
-      <div>
+      <div className='homepage-top'>
+      <div className='sort-group'>
       <label htmlFor='sort-select' className='sort-text'>Sort by:</label>
       <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}>
         <option value={SortMethod.PopularityHigh}>Popularity(desc)</option>
@@ -115,6 +129,18 @@ function Games() {
         <option value={SortMethod.DateLow}>Date Created(asc)</option>
       </select>
     </div>
+    <div className="game-list-container">
+      <div className="search-container">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(event) => setSearchInput(event.target.value)}
+          placeholder="Search for games..."
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+    </div>
+      </div>
       <div className='content'>
         {gamesArray.map((game: GameItem) => ( //map your output
           <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
@@ -123,7 +149,7 @@ function Games() {
           </div>
         ))}
       </div>
-      <button className='load-button' onClick={handleLoadMore}>Load More</button>
+      <div className='load-more'><button className='button-resp' onClick={handleLoadMore}>Load More</button></div>
     </div>
   )
 }
