@@ -90,6 +90,8 @@ function Details() {
     fetchGameData5();
   }, []);
 
+
+
   return (
     <div>
       <div>Game Details</div>

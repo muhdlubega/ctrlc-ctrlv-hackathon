@@ -116,7 +116,7 @@ function Games() {
       </select>
     </div>
       <div className='content'>
-        {gamesArray.map((game: GameItem) => (
+        {gamesArray.map((game: GameItem) => ( //map your output
           <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
             <img className='game-image' alt={'game item'} src={game?.background_image}></img>
             <div className='game-name'>{game?.name}</div>
