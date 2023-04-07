@@ -295,3 +295,112 @@
       align-items: center;
     }
   }  
+/* CSS */
+
+.topic {
+  color: white;
+}
+
+.genregroup {
+  display: flex;
+  flex: 1;
+  color: #0000;
+  flex-wrap: wrap;
+
+  button{
+    padding: 50px;
+    margin:auto;
+    width: 512px;
+    height: 30px;
+    font-family: monospace;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #fff;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+}
+
+.details {
+
+  margin: 0 2%;
+
+  &-action {
+    background-image: url("https://media.rawg.io/media/games/c4b/c4b0cab189e73432de3a250d8cf1c84e.jpg");
+    background-position: center center;
+    background-size: cover
+  }
+
+  &-indie {
+    background-image: url("https://media.rawg.io/media/games/63f/63f0e68688cad279ed38cde931dbfcdb.jpg");
+  }
+
+  &-adventure {
+    background-image: url("https://media.rawg.io/media/games/b72/b7233d5d5b1e75e86bb860ccc7aeca85.jpg");
+  }
+
+  &-rpg {
+    background-image: url("https://media.rawg.io/media/games/6cd/6cd653e0aaef5ff8bbd295bf4bcb12eb.jpg");
+  }
+
+  &-strategy {
+    background-image: url("https://media.rawg.io/media/games/095/0953bf01cd4e4dd204aba85489ac9868.jpg");
+  }
+
+  &-shooter {
+    background-image: url("https://media.rawg.io/media/games/be0/be01c3d7d8795a45615da139322ca080.jpg");
+  }
+
+  &-casual {
+    background-image: url("https://media.rawg.io/media/games/89a/89a700d3c6a76bd0610ca89ccd20da54.jpg");
+  }
+
+  &-simulation {
+    background-image: url("https://media.rawg.io/media/games/23b/23b69bfef2a1ce2e3dcdf1aa8ef1150b.jpg");
+  }
+
+  &-puzzle {
+    background-image: url("https://media.rawg.io/media/games/74d/74dafeb9a442b87b9dd4a1d4a2faa37b.jpg");
+  }
+
+  &-arcade {
+    background-image: url("https://media.rawg.io/media/games/b4e/b4e4c73d5aa4ec66bbf75375c4847a2b.jpg");
+  }
+
+  &-platformer {
+    background-image: url("https://media.rawg.io/media/games/f90/f90ee1a4239247a822771c40488e68c5.jpg");
+  }
+
+  &-racing {
+    background-image: url("https://media.rawg.io/media/screenshots/69b/69bb243ea9896ddfc2e051b58e81624d.jpg");
+  }
+
+  &-massivelymultiplayer {
+    background-image: url("https://media.rawg.io/media/games/34b/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg");
+  }
+
+  &-sports {
+    background-image: url("https://media.rawg.io/media/games/0c1/0c1c9965ba59166ab986a663ab2252dc.jpg");
+  }
+
+  &-fighting {
+    background-image: url("https://media.rawg.io/media/games/297/297a51aa1f0999016d5a35e2e1d6d8ab.jpg");
+  }
+
+  &-family {
+    background-image: url("https://media.rawg.io/media/games/0c1/0c1c9965ba59166ab986a663ab2252dc.jpg");
+  }
+
+  &-boardgames {
+    background-image: url("https://media.rawg.io/media/screenshots/220/22073cc438f0fb97967a1b53fd58c920.jpg");
+  }
+
+  &-educational {
+    background-image: url("https://media.rawg.io/media/screenshots/9d4/9d45ba1c76712ad692fadda67f2777a9.jpeg");
+  }
+
+  &-card {
+    background-image: url("https://media.rawg.io/media/games/d3f/d3f9638e581b01d872bec784aaa9bdad.jpg");
+  }
+
+}
