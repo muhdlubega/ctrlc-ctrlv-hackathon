@@ -14,14 +14,14 @@ function SearchBar() {
   const [searchResults, setSearchResults] = useState<GameItem[]>([]);
   const navigate = useNavigate();
 
-  const getGamesNames = () => {
+  const getSearchItem = () => {
     getGamesSearch({ search: searchInput }).then((output) => {
       setSearchResults(output?.data?.results);
     });
   };
 
   const handleSearch = () => {
-    getGamesNames();
+    getSearchItem();
     navigate(`/search/${searchInput}`);
   };
 

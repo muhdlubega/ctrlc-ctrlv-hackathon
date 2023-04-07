@@ -119,7 +119,7 @@ function GenreGames() {
           </div>
         ))}
       </div>
-      <button onClick={handleLoadMore}>Load More</button>
+      <button className='button-resp' onClick={handleLoadMore}>Load More</button>
     </div>
   )
 }

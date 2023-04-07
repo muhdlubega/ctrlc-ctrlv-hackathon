@@ -1,3 +1,5 @@
+@import 'var';
+
 .game-image{
     display:inline-block;
     height: 125px;
@@ -254,8 +256,12 @@
   display: flex;
 }
 
+.sort-group{
+  display: flex;
+}
 .sort-text{
   display:flex;
+  color: #fff;
 }
 
 .sort-select{
@@ -402,5 +408,71 @@
   &-card {
     background-image: url("https://media.rawg.io/media/games/d3f/d3f9638e581b01d872bec784aaa9bdad.jpg");
   }
+  &-title{
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+  &-image{
+    height: 500px;
+    margin: 20px;
+    -moz-box-shadow: 0 0 50px #a404b3;
+-webkit-box-shadow: 0 0 50px #a404b3;
+box-shadow: 0px 0px 50px #a404b3;
+  }
+  &-sc{
+    &img{
+      width: 100%;
+      margin: 10px;
+      padding: 10px;
+    }
+    &-list{
+      display: flex;
+      list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+    }
+  }
+}
 
+.load-more{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.homepage-top{
+  display: flex;
+  align-items: flex-end;
+justify-content: space-between;
+margin:30px;
+.load-button{
+  display: flex;
+}
+
+.sort-text{
+  display:flex;
+}
+
+.sort-select{
+  display: flex;
+}
+}
+
+.error{
+  color:#8d8a8a;
+  display: flex;
+  justify-content: center;
+  font-size: 300%;
+  margin-bottom: 500px;
+  
+  &-title{
+    color:#8d8a8a;
+  display: flex;
+  justify-content: center;
+    font-size: 1500%;
+    margin-bottom: 0;
+  }
 }
