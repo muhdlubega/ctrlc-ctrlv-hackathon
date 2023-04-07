@@ -1,11 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import { getGenreSortPopularityHigh, getGenreSortPopularityLow, getGenreSortAlphabeticalHigh, getGenreSortAlphabeticalLow, 
 getGenreSortRatingHigh, getGenreSortRatingLow, getGenreSortMetaHigh, getGenreSortMetaLow,
 getGenreSortReleaseHigh, getGenreSortReleaseLow, getGenreSortDateHigh, getGenreSortDateLow } from '../../APIKey/APIKey';
 import '../../Styles/main.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-
 interface GameItem {
   name: string;
   background_image: string;
