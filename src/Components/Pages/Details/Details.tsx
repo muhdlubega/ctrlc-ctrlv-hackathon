@@ -49,6 +49,7 @@ interface GameDetails {
   };
 }
 
+
 function Details() {
   const [gameDetails, setGameDetails] = useState<GameDetails | null>(null);
   const [gameTrailers, setGameTrailers] = useState<GameDetails["gameTrailers"]  | null>(null);
@@ -243,5 +244,4 @@ function Details() {
     </div>
   ); 
 }
-
 export default Details;
