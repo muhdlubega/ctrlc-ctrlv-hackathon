@@ -2,9 +2,9 @@ import { getGamesAdditions, getGamesScreenshots, getGamesDetails, getGamesStores
 import "../../Styles/main.scss";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Id } from "../../APIKey/APIKey";
 import PercentageWheel from "./Metacritic";
 import ratingToStars from "./UserRatings";
+import placeholder from '../../../Assets/image/placeholder.svg';
 
 interface GameDetails {
   name?: string;
@@ -73,8 +73,6 @@ function Details() {
   const [gameScreenshots, setGameScreenshots] = useState<GameDetails["gameScreenshots"] | null>(null);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const totalPercentage = gameDetails?.ratings?.reduce((total, rating) => total + (rating?.percent as number), 0);
-
 
 
   const fetchGameData = async () => {
@@ -128,13 +126,11 @@ function Details() {
     fetchGameData2();
     fetchGameData3();
     fetchGameData4();
-  }, []);
-
-
+  });
 
   return (
     <div className="details-container">
-      <div className="details-content">
+      <div className="details-content-skew">
       <table className="game-name">
         <tr>
           <div className="details-title">{gameDetails?.name}</div>
@@ -147,40 +143,31 @@ function Details() {
                   <img className="details-image" src={gameDetails?.background_image} alt="Game Background"/>
                 </tr>
                 <tr>
-                  <div>
+                  <span>
+                    {gameScreenshots && gameScreenshots.results && (
+                      <div className="details-screenshot">
+                      <ul>
+                        {gameScreenshots?.results?.map((screenshot, index) => (
+                          <li key={screenshot?.id}>
+                            <img
+                              src={screenshot?.image}
+                              alt={`Screenshot ${screenshot?.id}`}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    )}
+                    
                     {gameTrailers && gameTrailers?.results && gameTrailers?.results.length > 0 && (
-                      <video style={{height: 300}} controls autoPlay muted>
+                      <video className="details-trailer" controls autoPlay muted>
                         <source src={gameTrailers?.results[0]?.data?.max} type="video/mp4" />
                       </video>
                     )}
-                    {gameScreenshots && gameScreenshots.results && (
-                      <div className="details-sc-container">
-                        <ul className="details-sc-list">
-                          {gameScreenshots.results.map((screenshot) => (
-                            <li className="details-sc" key={screenshot?.id}>
-                              <img className="details-scimg" src={screenshot?.image} alt={`Screenshot ${screenshot?.id}`} />
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+                  </span>
                 </tr>
-                <tr>
-                  <div>
-                    <h3>DLCs and Additions</h3>
-                    <ul>
-                      {gameAdditions?.results?.map((addition) => (
-                        <li key={addition?.background_image}>
-                          <div>
-                            <img style={{height: 150}} src={addition?.background_image} alt={addition?.name} />
-                            <span>{addition?.name}</span>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </tr>
+                
               </th>
             </tr>
           </table>
@@ -191,12 +178,12 @@ function Details() {
               <table className="game-name">
                 <tbody>
                   <tr>
-                    <th>Metacritic Rating</th>
+                    <th><span>Metacritic Score</span></th>
                     <td><PercentageWheel percentage={gameDetails?.metacritic ?? 0} /></td>
                   </tr>
                   <tr>
                     <th>User Ratings</th>
-                    <td><div className="stars-container">{ratingToStars(gameDetails?.rating)}</div> {gameDetails?.rating?.toFixed(1)} / 5.0</td>
+                    <td className="details-star"><div className="stars-container">{ratingToStars(gameDetails?.rating)}</div> {gameDetails?.rating?.toFixed(1)} / 5.0</td>
                   </tr>
                   <tr>
                     <th></th>
@@ -204,12 +191,13 @@ function Details() {
                     <div className="ratings-container">
         {gameDetails?.ratings?.map((rating, index) => (
           <div key={index} className="rating">
-            <span className="rating-title">{rating.title}</span>
+            
             <div className="percentage-bar">
               <div className="percentage-bar-value" style={{ width: `${rating.percent}%` }}>
-                <span className="percentage">{rating.percent}%</span>
               </div>
             </div>
+            <div className="percentage">{rating.percent}% </div>
+            <div className="rating-title">{rating.title}</div>
           </div>
         ))}
       </div>
@@ -305,12 +293,32 @@ function Details() {
                     <tr key={platform?.platform?.name}>
                         <th>PC System Requirements</th>
                         <td>
-                        <div>Minimum: {platform?.requirements?.minimum}</div>
-                        <div>Recommended: {platform?.requirements?.recommended}</div>
+                        <div>{platform?.requirements?.minimum}</div>
+                        <div>{platform?.requirements?.recommended}</div>
                         </td>
                     </tr>
                   )
                 ))}
+                <tr>
+                    <th>DLCs and Additions</th>
+                  <td>
+                    <ul className="details-dlc">
+                      {gameAdditions?.results?.map((addition) => (
+                        <li key={addition?.background_image}>
+                          <div>
+                            <div className="details-dlc-image">
+                            <img src={addition?.background_image} alt={"DLC and Additions"} 
+                            onError={(e) => {
+                              e.currentTarget.src = placeholder;
+                            }}/>
+                            </div>
+                            <div>{addition?.name}</div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </td>
+                </tr>
                 </tbody>
               </table>
               </div>    

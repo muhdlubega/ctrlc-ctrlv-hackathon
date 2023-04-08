@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getGamesSearch,getSortPopularityHigh, getSortPopularityLow, getSortAlphabeticalHigh, getSortAlphabeticalLow, 
-getSortRatingHigh, getSortRatingLow, getSortMetaHigh, getSortMetaLow,
-getSortReleaseHigh, getSortReleaseLow, getSortDateHigh, getSortDateLow } from '../../APIKey/APIKey';
+import { getGamesSearch,getSortPopularityHigh, getSortAlphabeticalHigh, getSortRatingHigh, getSortMetaHigh, getSortReleaseHigh, getSortDateHigh } from '../../APIKey/APIKey';
 import '../../Styles/main.scss';
 import { useNavigate } from 'react-router-dom';
 import myGif from '../../../Assets/image/loading.gif';
+import placeholder from '../../../Assets/image/placeholder.svg';
 
 interface GameItem {
   name: string;
@@ -121,7 +120,9 @@ function Games() {
         {loading && <div><img style={{height:50, margin:20}} src={myGif} alt="Loading...." /></div>}
         {!loading &&
           <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
-            <img className='game-image' alt={'game item'} src={game?.background_image}></img>
+            <img className='game-image' alt={'game item'} src={game?.background_image} onError={(e) => {
+                              e.currentTarget.src = placeholder;
+                            }}></img>
             <div className='game-name'>{game?.name}</div>
           </div>
           }
