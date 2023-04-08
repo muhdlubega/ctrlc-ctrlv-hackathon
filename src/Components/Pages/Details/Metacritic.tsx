@@ -18,7 +18,7 @@ export default function PercentageWheel({ percentage }: PercentageWheelProps) {
 
     const width = canvas.width;
     const height = canvas.height;
-    const radius = width / 2 - 10;
+    const radius = width / 2 - 5;
 
     const animate = () => {
       // Clear the canvas
@@ -72,5 +72,5 @@ export default function PercentageWheel({ percentage }: PercentageWheelProps) {
     };
   }, [percentage]);
 
-  return <canvas ref={canvasRef} width={100} height={100} />;
+  return <canvas style={{paddingTop: 10}} ref={canvasRef} width={100} height={100} />;
 }
