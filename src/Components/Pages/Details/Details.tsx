@@ -10,7 +10,13 @@ interface GameDetails {
   name?: string;
   metacritic?: number;
   rating?: number;
+  ratings?:{
+    title?:string;
+    percent?:number;
+  }[];
   esrb_rating?: {name:string};
+  website?: string;
+  reddit_url?: string;
   genres?: {name:string, id:number}[];
   developers?: {name:string, id:number}[];
   publishers?: {name:string, id:number}[];
@@ -22,6 +28,15 @@ interface GameDetails {
   data: {
     max?: number;
   };
+  platforms?: {
+    platform?: {
+      name: string;
+    };
+    requirements: {
+      minimum?:string;
+    recommended?:string
+  };
+  }[];
   gameTrailers?: {
     results?: {
       data?: {
@@ -58,6 +73,9 @@ function Details() {
   const [gameScreenshots, setGameScreenshots] = useState<GameDetails["gameScreenshots"] | null>(null);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const totalPercentage = gameDetails?.ratings?.reduce((total, rating) => total + (rating?.percent as number), 0);
+
+
 
   const fetchGameData = async () => {
     try {
@@ -115,15 +133,16 @@ function Details() {
 
 
   return (
-    <div>
-      <table>
+    <div className="details-container">
+      <div className="details-content">
+      <table className="game-name">
         <tr>
           <div className="details-title">{gameDetails?.name}</div>
         </tr>
         <tr>
           <table>
             <tr>
-              <th>
+              <th className="table-row1">
                 <tr>
                   <img className="details-image" src={gameDetails?.background_image} alt="Game Background"/>
                 </tr>
@@ -163,7 +182,12 @@ function Details() {
                   </div>
                 </tr>
               </th>
-            <td>
+            </tr>
+          </table>
+        </tr>
+      </table>
+      </div>
+      <div className="details-content">
               <table className="game-name">
                 <tbody>
                   <tr>
@@ -172,7 +196,24 @@ function Details() {
                   </tr>
                   <tr>
                     <th>User Ratings</th>
-                    <td>{ratingToStars(gameDetails?.rating)} {gameDetails?.rating?.toFixed(1)} / 5.0</td>
+                    <td><div className="stars-container">{ratingToStars(gameDetails?.rating)}</div> {gameDetails?.rating?.toFixed(1)} / 5.0</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td>
+                    <div className="ratings-container">
+        {gameDetails?.ratings?.map((rating, index) => (
+          <div key={index} className="rating">
+            <span className="rating-title">{rating.title}</span>
+            <div className="percentage-bar">
+              <div className="percentage-bar-value" style={{ width: `${rating.percent}%` }}>
+                <span className="percentage">{rating.percent}%</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+                    </td>
                   </tr>
                   <tr>
                     <th>ESRB Rating</th>
@@ -188,12 +229,24 @@ function Details() {
                       </td>
                     </tr>
                   )}
+                  <tr>
+                    <th>Game Website</th>
+                    <td>
+                    <a href={gameDetails?.website} target="_blank" rel="noopener noreferrer">{gameDetails?.website}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Game Subreddit</th>
+                    <td>
+                    <a href={gameDetails?.reddit_url} target="_blank" rel="noopener noreferrer">{gameDetails?.reddit_url}</a>
+                    </td>
+                  </tr>
                   {gameDetails?.developers && (
                     <tr>
                       <th>Developed By</th>
                       <td>
                         {gameDetails.developers.map((developer) => (
-                          <span>{developer.name}, </span>
+                          <div>{developer.name}</div>
                         ))}
                       </td>
                     </tr>
@@ -203,7 +256,7 @@ function Details() {
                       <th>Published By</th>
                       <td>
                         {gameDetails.publishers.map((publisher) => (
-                          <span>{publisher.name}, </span>
+                          <div>{publisher.name}</div>
                         ))}
                       </td>
                     </tr>
@@ -220,9 +273,22 @@ function Details() {
                     <th>Description</th>
                     <td dangerouslySetInnerHTML={{ __html: gameDetails?.description ?? '' }}></td>
                   </tr>
+                  {gameDetails?.platforms && (
+                    <tr>
+                      <th>Available on these platforms</th>
+                      <td>
+                        {gameDetails.platforms.map((platform) => (
+                          <div>
+                            <div>{platform?.platform?.name}</div>
+                          </div>
+                        ))}
+                      </td>
+                    </tr>
+                  )}
+                  
                   {gameStores && gameStores.results && gameStores.results.length > 0 && (
                     <tr>
-                      <th>Stores:</th>
+                      <th>Where to Play:</th>
                       <td>
                         {gameStores.results.map((store) => (
                           <div key={store.id}>
@@ -234,13 +300,20 @@ function Details() {
                       </td>
                     </tr>
                   )}
+                  {gameDetails?.platforms?.map((platform) => (
+                  platform?.platform?.name === "PC" && (
+                    <tr key={platform?.platform?.name}>
+                        <th>PC System Requirements</th>
+                        <td>
+                        <div>Minimum: {platform?.requirements?.minimum}</div>
+                        <div>Recommended: {platform?.requirements?.recommended}</div>
+                        </td>
+                    </tr>
+                  )
+                ))}
                 </tbody>
               </table>
-            </td>
-            </tr>
-          </table>
-        </tr>
-      </table>    
+              </div>    
     </div>
   ); 
 }
