@@ -39,7 +39,7 @@ export default function AuthModal() {
 
   // Render the component
   return (
-    <div>
+    <div className="auth">
       {/* Open modal on click */}
       <a
         className="auth-button"

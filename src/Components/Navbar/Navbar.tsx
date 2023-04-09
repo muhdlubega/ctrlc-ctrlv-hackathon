@@ -6,10 +6,10 @@ import AuthDetails from '../Login/AuthDetails';
 const Navbar = () => {
   return (
     <div className='nav'>
-        <span><h2><Link to='/' >Home</Link></h2></span>
-        <span><h2><Link to='/genres'>Genre</Link></h2></span>
-        <span><h2><Link to='/about'>About</Link></h2></span>
-        <span><h2><Link to='/account'>Account</Link></h2></span>
+        <h2><Link to='/' >Home</Link></h2>
+        <h2><Link to='/genres#genreidsec'>Genre</Link></h2>
+        <h2><Link to='/about'>About</Link></h2>
+        <h2><Link to='/account'>Account</Link></h2>
         <AuthModal/>
         <AuthDetails/>
         
