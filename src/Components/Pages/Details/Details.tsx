@@ -126,7 +126,7 @@ function Details() {
     fetchGameData2();
     fetchGameData3();
     fetchGameData4();
-  });
+  },[]);
 
   return (
     <div className="details-container">
