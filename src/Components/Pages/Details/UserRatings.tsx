@@ -13,7 +13,7 @@ export default function ratingToStars(rating: number | undefined): string {
     }
   
     if (halfStars) {
-      stars.push("½");
+      stars.push("★");
     }
   
     for (let i = stars.length; i < 5; i++) {
