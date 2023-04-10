@@ -8,13 +8,22 @@
     padding: 10px;
 }
 .game-image:hover{
-    transform: scale(2);
+    transform: scale(1.5);
     padding: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.game-name {
+.game-span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game-spantitle {
   color: #f2f1ef;
+  margin: 5px;
+  width: 50%;
+  display: inline-block;
+  word-wrap: break-word;
 }
 .content{
     max-width:100%;
@@ -1393,3 +1402,42 @@ flex-direction: column;
   color: #ffffff;
 }
 
+.fave-button {
+  border-radius: 50%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  background-image: linear-gradient(#2b0432 0, #0c0d0d 100%);
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+}
+.fave-button:hover {
+  cursor: pointer;
+  border: 2px solid rgb(0, 0, 0);
+  background-image: linear-gradient(92.83deg, #a404b3 0, #770282 100%);
+  color: #ffffff;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-style: normal;
+  src: url(https://use.fontawesome.com/releases/v5.15.3/webfonts/fa-solid-900.eot);
+  src: url(https://use.fontawesome.com/releases/v5.15.3/webfonts/fa-solid-900.eot?#iefix) format('embedded-opentype'),
+       url(https://use.fontawesome.com/releases/v5.15.3/webfonts/fa-solid-900.woff2) format('woff2'),
+       url(https://use.fontawesome.com/releases/v5.15.3/webfonts/fa-solid-900.woff) format('woff'),
+       url(https://use.fontawesome.com/releases/v5.15.3/webfonts/fa-solid-900.ttf) format('truetype'),
+       url(https://use.fontawesome.com/releases/v5.15.3/webfonts/fa-solid-900.svg#fontawesome) format('svg');
+}
+
+.fa-heart:before {
+  content: "\f004";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}

@@ -4,6 +4,11 @@ import '../../Styles/main.scss';
 import { useNavigate } from 'react-router-dom';
 import myGif from '../../../Assets/image/loading.gif';
 import placeholder from '../../../Assets/image/placeholder.svg';
+import { useFavoriteGames } from '../../States/FavoritesContext';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
 
 interface GameItem {
   name: string;
@@ -29,6 +34,7 @@ function Games() {
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
   const [favorites, setFavorites] = useState<GameItem[]>([]); // new state for favorite games
+  const { favoriteGames, addGameToFavorite, removeGameFromFavorite } = useFavoriteGames();
 
   const sortedGames = useMemo(() => {
     switch (sortMethod) {
@@ -84,20 +90,21 @@ function Games() {
   }
 
   const handleFavorite = (game: GameItem) => {
-    if (favorites.includes(game)) {
-      setFavorites(favorites.filter((f) => f !== game));
-      console.log(`Removed ${game.name} from favorites`);
+    const gameTitle = game.name;
+  
+    if (favoriteGames.includes(gameTitle)) {
+      removeGameFromFavorite(gameTitle);
     } else {
-      setFavorites([...favorites, game]);
-      console.log(`Added ${game.name} to favorites`);
+      addGameToFavorite(gameTitle);
     }
   };
   
-
-  // update button text based on whether the game is in favorites
   const getButtonText = (game: GameItem) => {
-    return favorites.includes(game) ? 'Remove from favorites' : 'Add to favorites';
+    const gameTitle = game.name;
+    return favoriteGames.includes(gameTitle) ? '❤️' : '♡';
   };
+  
+  
   useEffect(() => {
     getGamesNames();
   }, [sortMethod]);
@@ -146,10 +153,12 @@ function Games() {
                     e.currentTarget.src = placeholder;
                   }}
                 ></img>
-                <div className='game-name'>{game?.name}</div>
-                <button onClick={(e) => { e.stopPropagation(); handleFavorite(game); }}>
+                <span className='game-span'>
+                <span className='game-spantitle'>{game?.name}</span>
+                <button className='fave-button' onClick={(e) => { e.stopPropagation(); handleFavorite(game); }}>
                   {getButtonText(game)}
                 </button>
+                </span>
               </div>
             )}
           </div>
