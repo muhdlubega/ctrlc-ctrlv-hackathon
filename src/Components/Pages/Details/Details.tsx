@@ -5,77 +5,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import PercentageWheel from "./Metacritic";
 import ratingToStars from "./UserRatings";
 import placeholder from '../../../Assets/image/placeholder.svg';
-
-interface GameDetails {
-  name?: string;
-  metacritic?: number;
-  rating?: number;
-  ratings?:{
-    title?:string;
-    percent?:number;
-  }[];
-  esrb_rating?: {name:string};
-  website?: string;
-  reddit_url?: string;
-  genres?: {name:string, id:number}[];
-  developers?: {name:string, id:number}[];
-  publishers?: {name:string, id:number}[];
-  released?: string;
-  playtime?: string;
-  description?: string;
-  background_image?: string;
-  max?: string;
-  data: {
-    max?: number;
-  };
-  platforms?: {
-    platform?: {
-      name: string;
-    };
-    requirements: {
-      minimum?:string;
-    recommended?:string
-  };
-  }[];
-  gameTrailers?: {
-    results?: {
-      data?: {
-        max?: string;
-      };
-    }[];
-  };
-  gameAdditions?: {
-    results?: {
-      background_image?: string;
-      name?: string;
-    }[];
-  };
-  gameStores?: {
-    results?: {
-      id?: number;
-      url?: string;
-    }[];
-  };
-  gameScreenshots?: {
-    results?: {
-      id?: number;
-      image?: string;
-    }[];
-  };
-}
+import { GameDetails } from "../../Typescript/MainTypescript";
 
 
 function Details() {
+  const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const [showScreenshot, setShowScreenshot] = useState(false);
+
+  //return array for state and function for the API endpoints using useState
   const [gameDetails, setGameDetails] = useState<GameDetails | null>(null);
   const [gameTrailers, setGameTrailers] = useState<GameDetails["gameTrailers"]  | null>(null);
   const [gameAdditions, setGameAdditions] = useState<GameDetails["gameAdditions"] | null>(null);
   const [gameStores, setGameStores] = useState<GameDetails["gameStores"] | null>(null);
-  const [gameScreenshots, setGameScreenshots] = useState<GameDetails["gameScreenshots"] | null>(null);
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const [gameScreenshots, setGameScreenshots] = useState<GameDetails["gameScreenshots"]>({ results: [] });
 
-
-  const fetchGameData = async () => {
+  //fetch API endpoints for game details
+  const fetchGameDetails = async () => {
     try {
       const response = await getGamesDetails(id!);
       setGameDetails(response?.data);
@@ -83,8 +29,7 @@ function Details() {
       console.log(error);
     }
   }
-
-  const fetchGameData1 = async () => {
+  const fetchGameTrailer = async () => {
     try {
       const response1 = await getGamesTrailer(id!);
       setGameTrailers(response1?.data);
@@ -92,8 +37,7 @@ function Details() {
       console.log(error);
     }
   }
-
-  const fetchGameData2 = async () => {
+  const fetchGameAdditions = async () => {
     try {
       const response2 = await getGamesAdditions(id!);
       setGameAdditions(response2?.data);
@@ -101,8 +45,7 @@ function Details() {
       console.log(error);
     }
   }
-
-  const fetchGameData3 = async () => {
+  const fetchGameStores = async () => {
     try {
       const response3 = await getGamesStores(id!);
       setGameStores(response3?.data);
@@ -110,8 +53,7 @@ function Details() {
       console.log(error);
     }
   }
-
-  const fetchGameData4 = async () => {
+  const fetchGameScreenshots = async () => {
     try {
       const response3 = await getGamesScreenshots(id!);
       setGameScreenshots(response3?.data);
@@ -120,16 +62,71 @@ function Details() {
     }
   }
 
+  //useEffect and set dependency for the API endpoints
   useEffect(() => {
-    fetchGameData();
-    fetchGameData1();
-    fetchGameData2();
-    fetchGameData3();
-    fetchGameData4();
+    fetchGameDetails();
+    fetchGameTrailer();
+    fetchGameAdditions();
+    fetchGameStores();
+    fetchGameScreenshots();
   },[]);
 
+  useEffect(() => {
+    const element = document.getElementById("details-container");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+  }, []);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    } else {
+      setCurrentSlide(gameScreenshots.results.length - 1);
+    }
+  }
+
+  function nextSlide() {
+    if (currentSlide < gameScreenshots.results.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    } else {
+      setCurrentSlide(0);
+    }
+  }
+
+  //display data
   return (
-    <div className="details-container">
+    <div id="details-container" className="details-container">
+      {showScreenshot && (
+  <div className="details-container">
+  {showScreenshot && (
+    <div className="screenshot-popup">
+      <div className="slider">
+        <img
+          src={
+            gameScreenshots.results[currentSlide]?.image || placeholder
+          }
+          alt={`Screenshot ${currentSlide}`}
+        />
+      </div>
+      {gameScreenshots.results.length > 1 && (
+        <div className="arrows">
+          <button onClick={() => prevSlide()}>&#10094;</button>
+          <button onClick={() => nextSlide()}>&#10095;</button>
+        </div>
+      )}
+      <button
+        className="close-btn"
+        onClick={() => setShowScreenshot(false)}
+      >
+        X
+      </button>
+    </div>
+  )}
+</div>
+)}
       <div className="details-content-skew">
       <table className="game-name">
         <tr>
@@ -145,21 +142,20 @@ function Details() {
                 <tr>
                   <span>
                     {gameScreenshots && gameScreenshots.results && (
-                      <div className="details-screenshot">
-                      <ul>
-                        {gameScreenshots?.results?.map((screenshot, index) => (
-                          <li key={screenshot?.id}>
-                            <img
-                              src={screenshot?.image}
-                              alt={`Screenshot ${screenshot?.id}`}
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    )}
-                    
+  <div className="details-screenshot">
+    <ul>
+      {gameScreenshots?.results?.map((screenshot, index) => (
+        <li key={screenshot?.id}>
+          <img
+            src={screenshot?.image}
+            alt={`Screenshot ${screenshot?.id}`}
+            onClick={() => setShowScreenshot(true)}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
                     {gameTrailers && gameTrailers?.results && gameTrailers?.results.length > 0 && (
                       <video className="details-trailer" controls autoPlay muted>
                         <source src={gameTrailers?.results[0]?.data?.max} type="video/mp4" />
@@ -167,7 +163,6 @@ function Details() {
                     )}
                   </span>
                 </tr>
-                
               </th>
             </tr>
           </table>
@@ -277,7 +272,7 @@ function Details() {
                   {gameStores && gameStores.results && gameStores.results.length > 0 && (
                     <tr>
                       <th>Where to Play:</th>
-                      <td>
+                      <td className="wtp-fonts">
                         {gameStores.results.map((store) => (
                           <div key={store.id}>
                             <a href={store.url} target="_blank" rel="noopener noreferrer">
@@ -321,7 +316,7 @@ function Details() {
                 </tr>
                 </tbody>
               </table>
-              </div>    
+              </div>
     </div>
   ); 
 }

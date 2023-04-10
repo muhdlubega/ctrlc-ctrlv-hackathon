@@ -1,6 +1,9 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react'
 import {auth} from "../../firebase";
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../Pages/Account/AuthContext';
+
 export {};
 
 
@@ -8,21 +11,30 @@ export {};
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('')
+  const { createUser } = UserAuth();
+  const navigate = useNavigate()
 
-  const signUp = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((useCredential) => {
-      console.log(useCredential)
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
+    setError('');
+    try {
+      await createUser(email, password);
+      navigate('/account')
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message)
+        console.log(e.message)
+      }
+    }
+  };
 
   return (
     <div className='signup-container'>
-      <form onSubmit={signUp}>
-        <h1>Create Account</h1>
+      <div>
+        <h1>Sign up for a free account</h1>
+      </div>
+      <form onSubmit={handleSubmit}>
         <input
          type='email'
           placeholder='Enter your email' 
@@ -38,6 +50,12 @@ const Signup = () => {
         <button type="submit"> Sign Up</button>
 
       </form>
+      <p className='py-2'>
+          Already have an account ?{' '}
+          <Link to='/' className='underline'>
+            Sign in.
+          </Link>
+        </p>
     </div>
   )
 }

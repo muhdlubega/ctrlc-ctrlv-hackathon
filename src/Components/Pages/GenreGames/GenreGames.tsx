@@ -1,89 +1,84 @@
-import { useEffect, useState } from 'react';
-import { getGenreSortPopularityHigh, getGenreSortAlphabeticalHigh, getGenreSortRatingHigh, getGenreSortMetaHigh, getGenreSortReleaseHigh, getGenreSortDateHigh} from '../../APIKey/APIKey';
+import { useEffect, useState, useMemo } from 'react';
+import { getGenreSortPopularity, getGenreSortAlphabetical, getGenreSortRating, getGenreSortMeta, getGenreSortRelease, getGenreSortDate} from '../../APIKey/APIKey';
 import '../../Styles/main.scss';
 import { useNavigate, useParams } from 'react-router-dom';
-interface GameItem {
-  name: string;
-  background_image: string;
-  id: number;
-}
+import { GameItem } from '../../Typescript/MainTypescript';
+import { SortMethod } from '../../Typescript/MainTypescript';
 
-enum SortMethod {
-  PopularityHigh = 'PopularityHigh',
-  AlphabeticalHigh = 'AlphabeticalHigh',
-  RatingHigh = 'RatingHigh',
-  MetaHigh = 'MetaHigh',
-  ReleaseHigh = 'ReleaseHigh',
-  DateHigh = 'DateHigh',
-}
 
 function GenreGames() {
   const [gamesArray, setGamesArray] = useState<GameItem[]>([]);
   const navigate = useNavigate();
   const {id} = useParams<{id: string}>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortMethod, setSortMethod] = useState<SortMethod>(SortMethod.PopularityHigh);
+  const [sortMethod, setSortMethod] = useState<SortMethod>(SortMethod.Popularity);
 
-  const getGamesNames = () => {
-    let promise;
+  const getGamesNames = useMemo(() => { //Sorting function
     switch (sortMethod) {
-      case SortMethod.PopularityHigh:
-        promise = getGenreSortPopularityHigh({ page: currentPage },id!);
-        break;
-      case SortMethod.AlphabeticalHigh:
-        promise = getGenreSortAlphabeticalHigh({ page: currentPage },id!);
-        break;
-      case SortMethod.RatingHigh:
-        promise = getGenreSortRatingHigh({ page: currentPage },id!);
-        break;
-      case SortMethod.MetaHigh:
-        promise = getGenreSortMetaHigh({ page: currentPage },id!);
-        break;
-      case SortMethod.ReleaseHigh:
-        promise = getGenreSortReleaseHigh({ page: currentPage },id!);
-        break;
-      case SortMethod.DateHigh:
-        promise = getGenreSortDateHigh({ page: currentPage },id!);
-        break;
+      case SortMethod.Popularity:
+        return getGenreSortPopularity;
+      case SortMethod.Alphabetical:
+        return getGenreSortAlphabetical;
+      case SortMethod.Rating:
+        return getGenreSortRating;
+      case SortMethod.Meta:
+        return getGenreSortMeta;
+      case SortMethod.Release:
+        return getGenreSortRelease;
+      case SortMethod.Date:
+        return getGenreSortDate;
       default:
-        promise = getGenreSortPopularityHigh({ page: currentPage },id!);
+        return getGenreSortPopularity;
     }
+  }, [sortMethod]);
+
+  const fetchGames = () => { // Fetch data from API with a promise
+    let promise = getGamesNames({ page: currentPage }, id!); 
     promise.then(output => {
-      setGamesArray([...output?.data?.results])
+      setGamesArray([...gamesArray, ...output?.data?.results])
     })
   }
 
-  const handleLoadMore = () => {
+  const handleLoadMore = () => { // Load more games
     setCurrentPage(currentPage + 1);
-    getGamesNames();
   }
 
   const handleSort = (sortMethod: SortMethod) => {
     setSortMethod(sortMethod);
     setGamesArray([]);
     setCurrentPage(1);
-    getGamesNames();
   }
 
   useEffect(() => {
-    getGamesNames();
-  }, [sortMethod]);
+    fetchGames();
+  }, [getGamesNames]);
+
+  useEffect(() => {
+    const element = document.getElementById("details-container");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchGames();
+  }, [currentPage]);
 
   return (
     <div>
       <div className='sort-group'>
-      <label htmlFor='sort-select' className='sort-text'>Sort by:</label>
-      <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}>
-        <option value={SortMethod.PopularityHigh}>Popularity</option>
-        <option value={SortMethod.AlphabeticalHigh}>Alphabetical</option>
-        <option value={SortMethod.RatingHigh}>User Rating</option>
-        <option value={SortMethod.MetaHigh}>Metacritic Score</option>
-        <option value={SortMethod.ReleaseHigh}>Date Released</option>
-        <option value={SortMethod.DateHigh}>Date Created</option>
+      <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}> {/*Sorting Options*/}
+        <option value={''} disabled selected>Select Sorting Option</option>
+        <option value={SortMethod.Popularity}>Popularity</option>
+        <option value={SortMethod.Alphabetical}>Alphabetical</option>
+        <option value={SortMethod.Rating}>User Rating</option>
+        <option value={SortMethod.Meta}>Metacritic Score</option>
+        <option value={SortMethod.Release}>Date Released</option>
+        <option value={SortMethod.Date}>Date Created</option>
       </select>
     </div>
-      <div className='content'>
-        {gamesArray.map((game: GameItem) => (
+      <div className='content'> {/*Display Games*/}
+        {gamesArray.map((game: GameItem) => ( 
           <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
             <img className='game-image' alt={'game item'} src={game?.background_image}></img>
             <div className='game-name'>{game?.name}</div>
@@ -95,4 +90,4 @@ function GenreGames() {
   )
 }
 
-export default GenreGames
+export default GenreGames;

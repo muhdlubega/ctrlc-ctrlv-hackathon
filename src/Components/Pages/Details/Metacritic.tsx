@@ -1,8 +1,5 @@
 import { useRef, useEffect } from "react";
-
-interface PercentageWheelProps {
-  percentage: number;
-}
+import { PercentageWheelProps } from "../../Typescript/MainTypescript";
 
 export default function PercentageWheel({ percentage }: PercentageWheelProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
