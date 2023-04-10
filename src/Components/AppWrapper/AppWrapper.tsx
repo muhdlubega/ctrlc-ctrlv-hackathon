@@ -1,9 +1,6 @@
 import React, { ReactNode } from 'react';
+import {Props} from "../Typescript/MainTypescript";
 
-type Props = {
-    children: ReactNode;
-  }
-  
   const AppWrapper = ({ children }: Props) => {
     return (
       <div className="app-wrapper">

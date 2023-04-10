@@ -1,10 +1,7 @@
 import React, { ReactNode } from 'react';
 import Navbar from '../Navbar/Navbar'
 import Header from '../Header/Header';
-
-type Props = {
-  children: ReactNode;
-}
+import { Props } from '../Typescript/MainTypescript';
 
 export const Layout = ({ children }: Props) => {
   return (

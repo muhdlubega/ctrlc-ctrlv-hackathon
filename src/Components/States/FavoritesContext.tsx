@@ -1,11 +1,5 @@
 import { createContext, useContext, useState } from 'react';
 
-interface Game {
-  id: number;
-  name: string;
-  backgroundImage: string;
-}
-
 interface FavoriteGamesContextValue {
   favoriteGames: string[];
   addGameToFavorite: (game: string) => void;

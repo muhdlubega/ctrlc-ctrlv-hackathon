@@ -2,12 +2,7 @@ import { useState } from 'react';
 import { useFavoriteGames } from '../../States/FavoritesContext';
 import { useNavigate } from 'react-router-dom';
 import { getGamesSearch} from '../../APIKey/APIKey';
-  
-interface GameItem {
-  name: string;
-  background_image: string;
-  id: number;
-}
+import { GameItem } from '../../Typescript/MainTypescript';
 
   function FavoriteGames() {
     const { favoriteGames } = useFavoriteGames();
