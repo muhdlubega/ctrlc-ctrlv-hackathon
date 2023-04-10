@@ -67,11 +67,15 @@ function GenreGames() {
 
   useEffect(() => {
     getGamesNames();
+    const element = document.getElementById("details-container");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
   }, [sortMethod]);
 
   return (
     <div>
-      <div className='sort-group'>
+      <div id="details-container" className='sort-group'>
       <label htmlFor='sort-select' className='sort-text'>Sort by:</label>
       <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}>
         <option value={SortMethod.PopularityHigh}>Popularity</option>

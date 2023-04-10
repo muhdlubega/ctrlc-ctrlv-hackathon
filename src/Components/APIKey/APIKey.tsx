@@ -15,11 +15,6 @@ export const getGamesSearch = ({search}: Query) => {
   return axios.get(`${BASE_URL}?key=${API_KEY}&page_size=${PAGE_SIZE}&search=${search}`);
 }
 
-// //API Keys for filtering functionalities
-// export const getFilterPlatform = ({page,platform}: Query) => {
-//   return axios.get(`${BASE_URL}?key=${API_KEY}&page_size=${PAGE_SIZE}&page=${page}&platforms=${platform}`);
-// }
-
 //API Keys for sorting functionalities
 const getSortEndpoint = (ordering: string) => ({ page }: Query) =>
   axios.get(`${BASE_URL}?key=${API_KEY}&ordering=${ordering}&page=${page}&page_size=${PAGE_SIZE}`);
