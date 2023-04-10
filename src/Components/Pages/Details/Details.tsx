@@ -327,7 +327,7 @@ function Details() {
                   {gameStores && gameStores.results && gameStores.results.length > 0 && (
                     <tr>
                       <th>Where to Play:</th>
-                      <td>
+                      <td className="wtp-fonts">
                         {gameStores.results.map((store) => (
                           <div key={store.id}>
                             <a href={store.url} target="_blank" rel="noopener noreferrer">
