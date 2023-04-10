@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "../Styles/main.scss";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import Account from '../Pages/Account/Account';
+import { Route, Routes } from 'react-router-dom';
+import { AuthContextProvider } from '../Pages/Account/AuthContext';
+import ProtectedRoute from '../Pages/Account/ProtectedRoute';
 
 // Define types for props
 interface LoginProps {
@@ -14,12 +18,43 @@ interface RegisterProps {
 
 // Component for login form
 function Login(props: LoginProps) {
-  return <div><Signin/></div>;
+  return <div>  <AuthContextProvider>
+  <Routes>
+    <Route path='/' element={<Signin />} />
+    <Route path='/genres' element={<Signin />} />
+    <Route path='/about' element={<Signin />} />
+    <Route path='/signup' element={<Signup />} />
+    <Route
+      path='/account'
+      element={
+        <ProtectedRoute>
+          <Account />
+        </ProtectedRoute>
+      }
+    />
+  </Routes>
+</AuthContextProvider>
+</div>;
 }
 
 // Component for register form
 function Register(props: RegisterProps) {
-  return <div><Signup/></div>;
+  return <div>  <AuthContextProvider>
+  <Routes>
+    <Route path='/' element={<Signin />} />
+    <Route path='/genres' element={<Signin />} />
+    <Route path='/about' element={<Signin />} />
+    <Route path='/signup' element={<Signup />} />
+    <Route
+      path='/account'
+      element={
+        <ProtectedRoute>
+          <Account/>
+        </ProtectedRoute>
+      }
+    />
+  </Routes>
+</AuthContextProvider></div>;
 }
 
 // Main authentication modal component
@@ -31,11 +66,6 @@ export default function AuthModal() {
   // Open and close modal
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
-
-  // Switch between login and register forms
-  const handleTabClick = (index: number) => {
-    setActiveForm(index);
-  };
 
   // Render the component
   return (
@@ -55,21 +85,6 @@ export default function AuthModal() {
       {isOpen && (
         <div className="auth-modal" onClick={handleClose}>
           <div className="auth-content" onClick={(e) => e.stopPropagation()}>
-            {/* Tabs for switching between login and register forms */}
-            <ul className="auth-tabs">
-              <li
-                className={activeForm === 0 ? "active-tab" : ""}
-                onClick={() => handleTabClick(0)}
-              >
-                Login
-              </li>
-              <li
-                className={activeForm === 1 ? "active-tab" : ""}
-                onClick={() => handleTabClick(1)}
-              >
-                Sign Up
-              </li>
-            </ul>
 
             {/* Render the active form */}
             <div className="auth-form">
