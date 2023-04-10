@@ -2,7 +2,7 @@ import axios from "axios";
 import {Query} from "../Typescript/MainTypescript";
 
 const BASE_URL = "https://api.rawg.io/api/games";
-const API_KEY = "012299a1f3f64ced87ec0b4bef924ccc";
+const API_KEY = "fbbc96143c8c424d9df2dd99d9746068";
 const PAGE_SIZE = 40;
 
 //API Keys for searching functionalities
