@@ -4,6 +4,7 @@ import { Layout } from './Components/Layout/Layout';
 import AppWrapper from './Components/AppWrapper/AppWrapper';
 import Footer from './Components/Footer/Footer';
 import myGif from './Assets/image/loading.gif';
+import { FavoriteGamesProvider } from './Components/States/FavoritesContext';
 
 
 const LazyHomePage = lazy(() => import("./Components/Pages/HomePage/HomePage"));
@@ -18,6 +19,7 @@ const LazyError = lazy(() => import("./Components/Pages/Error/Error"));
 function App() {
   return (
     <BrowserRouter>
+    <FavoriteGamesProvider>
     <AppWrapper>
       <Layout>
       <Routes>
@@ -33,6 +35,7 @@ function App() {
       <Footer></Footer>
       </Layout>
       </AppWrapper>
+      </FavoriteGamesProvider>
     </BrowserRouter>
   );
 }
