@@ -126,14 +126,14 @@ function Details() {
     fetchGameData2();
     fetchGameData3();
     fetchGameData4();
-  },[]);
+  });
 
   return (
     <div className="details-container">
       <div className="details-content-skew">
       <table className="game-name">
         <tr>
-          <div className="details-title">{gameDetails?.name}</div>
+          <div className="details-title">{gameDetails?.name} <button>+</button></div>
         </tr>
         <tr>
           <table>

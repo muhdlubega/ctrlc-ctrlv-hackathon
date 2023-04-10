@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../../firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { User } from 'firebase/auth';
+import "../Styles/main.scss";
 
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
+  const [alert, setAlert] = useState<{open: boolean, message: string, type: string}>({
+    open: false,
+    message: '',
+    type: '',
+  });
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         setAuthUser(user);
       } else {
@@ -23,20 +29,31 @@ const AuthDetails = () => {
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log('Sign Out successful');
+        setAuthUser(null);
+        setAlert({ open: true, message: "Sign out successful", type: "success" });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       })
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => {
+        setAlert({ open: true, message: error.message, type: "error" });
+      });
+  };  
 
   return (
     <div>
       {authUser ? (
         <>
-          <p>{`Signed In as ${authUser.email}`}</p>
-                    <button onClick={userSignOut}>Sign Out</button>
+          <h3 style={{ color: 'white' }}>{`Signed In as ${authUser.email}`}</h3>
+          <a className="auth-button" onClick={userSignOut}>Sign Out</a>
         </>
       ) : (
         <p>Signed Out</p>
+      )}
+      {alert.open && (
+        <div className={`alert alert-${alert.type}`}>
+          {alert.message}
+        </div>
       )}
     </div>
   );

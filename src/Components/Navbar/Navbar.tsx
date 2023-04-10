@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import AuthModal from '../Login/AuthModal';
-import AuthDetails from '../Login/AuthDetails';
+import { Link } from 'react-router-dom'
+import { auth } from '../../firebase'
+import AuthModal from '../Login/AuthModal'
+import AuthDetails from '../Login/AuthDetails'
 
 const Navbar = () => {
   const handleShift = () => {
