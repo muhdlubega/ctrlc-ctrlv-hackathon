@@ -39,12 +39,6 @@ const Signin = () => {
     <div className='signin-container'>
       <div>
         <h1>Sign in to your account</h1>
-        <p>
-          Don't have an account yet?{' '}
-          <Link to='Signup' className='underline'>
-            Sign up.
-          </Link>
-        </p>
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -61,6 +55,12 @@ const Signin = () => {
         ></input>
         <button type="submit"> Sign In</button>
       </form>
+      <p>
+          Don't have an account yet?{' '}
+          <Link to='Signup' className='underline'>
+            Sign up.
+          </Link>
+        </p>
     </div>
   )
   }

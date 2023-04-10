@@ -33,12 +33,6 @@ const Signup = () => {
     <div className='signup-container'>
       <div>
         <h1>Sign up for a free account</h1>
-        <p className='py-2'>
-          Already have an account ?{' '}
-          <Link to='/' className='underline'>
-            Sign in.
-          </Link>
-        </p>
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -56,6 +50,12 @@ const Signup = () => {
         <button type="submit"> Sign Up</button>
 
       </form>
+      <p className='py-2'>
+          Already have an account ?{' '}
+          <Link to='/' className='underline'>
+            Sign in.
+          </Link>
+        </p>
     </div>
   )
 }

@@ -19,12 +19,12 @@ export const getGamesSearch = ({search}: Query) => {
 const getSortEndpoint = (ordering: string) => ({ page }: Query) =>
   axios.get(`${BASE_URL}?key=${API_KEY}&ordering=${ordering}&page=${page}&page_size=${PAGE_SIZE}`);
 
-export const getSortPopularityHigh = getSortEndpoint("-popularity");
-export const getSortAlphabeticalHigh = getSortEndpoint("-name");
-export const getSortRatingHigh = getSortEndpoint("-rating");
-export const getSortMetaHigh = getSortEndpoint("-metacritic");
-export const getSortReleaseHigh = getSortEndpoint("-released");
-export const getSortDateHigh = getSortEndpoint("-created");
+export const getSortPopularity = getSortEndpoint("-popularity");
+export const getSortAlphabetical = getSortEndpoint("-name");
+export const getSortRating = getSortEndpoint("-rating");
+export const getSortMeta = getSortEndpoint("-metacritic");
+export const getSortRelease = getSortEndpoint("-released");
+export const getSortDate = getSortEndpoint("-created");
 
 //API Keys for game details endpoints
 export const getGamesDetails = (id: string) => {
@@ -56,9 +56,9 @@ export const getGenres = () => {
 const getGenreSortEndpoint = (ordering: string) => ({ page }: Query, id: string) =>
   axios.get(`${BASE_URL}?key=${API_KEY}&ordering=${ordering}&page=${page}&page_size=${PAGE_SIZE}&genres=${id}`);
 
-export const getGenreSortPopularityHigh = getGenreSortEndpoint("-popularity");
-export const getGenreSortAlphabeticalHigh = getGenreSortEndpoint("-name");
-export const getGenreSortRatingHigh = getGenreSortEndpoint("-rating");
-export const getGenreSortMetaHigh = getGenreSortEndpoint("-metacritic");
-export const getGenreSortReleaseHigh = getGenreSortEndpoint("-released");
-export const getGenreSortDateHigh = getGenreSortEndpoint("-created");
+export const getGenreSortPopularity = getGenreSortEndpoint("-popularity");
+export const getGenreSortAlphabetical = getGenreSortEndpoint("-name");
+export const getGenreSortRating = getGenreSortEndpoint("-rating");
+export const getGenreSortMeta = getGenreSortEndpoint("-metacritic");
+export const getGenreSortRelease = getGenreSortEndpoint("-released");
+export const getGenreSortDate = getGenreSortEndpoint("-created");
