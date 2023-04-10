@@ -74,7 +74,12 @@ function Games() {
   const handleLoadMore = () => {
     setCurrentPage(currentPage + 1);
     getGamesNames();
+    window.scrollTo({
+      top:1200, 
+      behavior: 'smooth'
+    });
   }
+
 
   const handleSort = (sortMethod: SortMethod) => {
     setSortMethod(sortMethod);

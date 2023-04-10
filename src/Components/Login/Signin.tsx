@@ -1,21 +1,30 @@
 import { signInWithEmailAndPassword} from 'firebase/auth';
 import React, { useState } from 'react'
 import {auth} from "../../firebase";
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../Pages/Account/AuthContext';
 
 
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { signIn } = UserAuth();
 
-  const signIn = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-    .then((useCredential) => {
-      console.log(useCredential)
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
+    setError('')
+    try {
+      await signIn(email, password)
+      navigate('/account')
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message)
+        console.log(e.message)
+      }
+    }
+  };
 
   /*const signInWithGoogle = async () => {
     try {
@@ -28,8 +37,16 @@ const Signin = () => {
 
   return (
     <div className='signin-container'>
-      <form onSubmit={signIn}>
-        <h1>Log in to your account</h1>
+      <div>
+        <h1>Sign in to your account</h1>
+        <p>
+          Don't have an account yet?{' '}
+          <Link to='Signup' className='underline'>
+            Sign up.
+          </Link>
+        </p>
+      </div>
+      <form onSubmit={handleSubmit}>
         <input
          type='email'
           placeholder='Enter your email' 
