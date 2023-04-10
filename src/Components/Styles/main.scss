@@ -25,18 +25,6 @@
     display: grid;
     grid-gap: 1fr;
 }
-  @media (min-width: 0px) {
-    .content { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1200) {
-    .content { grid-template-columns: repeat(4, 1fr); }
-  }
-  @media (min-width: 1800px) {
-    .content { grid-template-columns: repeat(5, 1fr); }
-  }
-  @media (min-width: 2800px) {
-    .content { grid-template-columns: repeat(8, 1fr); }
-  }
 
   .auth-button {
     background-color: #a404b3;
@@ -73,7 +61,7 @@
   }
   
 .nav {
-  display: flex;
+    display: flex;
     justify-content: space-around;
     background-color: #000000;
     height: 5rem;
@@ -87,7 +75,6 @@
       }
 
       h2{
-
         a{
           color: #f2f1ef;
           text-decoration: none;
@@ -100,6 +87,11 @@
         }
         
       }
+
+      .auth {
+        display: flex;
+        align-items: center;
+    }
   
     }
 
@@ -159,7 +151,7 @@
   .scroll-down-container {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-48%) translateY(-55%);
     text-align: center;
   }
   
@@ -217,16 +209,12 @@
       margin-top: 0px;
     }
   }
-  
-  &-center {
-    width: 30%;
-  }
 
   &-list{
     column-count: 4;
 
       li{
-        margin-bottom: 30px;
+        // margin-bottom: 30px;
 
         a{
           color: #f2f1ef;
@@ -737,6 +725,188 @@ margin:30px;
   }
 }
 
+
+
+
+  //RESPONSIVE//
+  // @media (min-width: 0px) {
+  //   .content { grid-template-columns: repeat(2, 1fr); }
+  // }
+  @media (max-width:482px) {
+    .header { 
+
+      &-title {
+        font-size: 50px;
+        -webkit-text-stroke-width: 3px;
+      }
+
+      &-text {
+        font-size: 10px;
+      }
+       
+    }
+
+    .content {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+  .footer-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0px;
+}
+  }
+
+
+  @media (min-width:483px) and (max-width:631px) {
+    .header { 
+
+      &-title {
+        font-size: 65px;
+        -webkit-text-stroke-width: 5px;
+      }
+
+      &-text {
+        font-size: 15px;
+      }
+       
+    }
+
+    .content {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+  .footer-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0px;
+}
+  }
+  
+  @media (min-width:632px) and (max-width:742px) {
+    .header { 
+
+      &-title {
+        font-size: 85px;
+        -webkit-text-stroke-width: 5px;
+      }
+
+      &-text {
+        font-size: 20px;
+      }
+       
+    }
+
+    .content {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+  }
+  
+  @media (min-width:743px) and (max-width:1019px) {
+    .header { 
+
+      &-title {
+        font-size: 100px;
+        -webkit-text-stroke-width: 5px;
+      }
+
+      &-text {
+        font-size: 28px;
+      }
+       
+    }
+
+    .content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+  }
+  
+  @media (min-width:1020px) and (max-width: 1336px) {
+    .header { 
+
+      &-title {
+        font-size: 120px;
+      }
+
+      &-text {
+        font-size: 30px;
+      }
+       
+    }
+
+    .content {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+  }
+
+  @media (min-width: 1337px) {
+    .content { 
+      grid-template-columns: repeat(5, 1fr); 
+      // grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      // grid-gap: 20px;
+      // grid-auto-flow: dense; /* set grid-auto-flow to dense */
+    }
+  }
+  // @media (min-width: 2800px) {
+  //   .content { grid-template-columns: repeat(8, 1fr); }
+  // }
 // Profile card
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
