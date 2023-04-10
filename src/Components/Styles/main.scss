@@ -73,7 +73,7 @@
     margin: 0;
 
     li {
-      font-size: 1.8rem;
+      font-size: 2.5rem;
     }
   }
 
@@ -1378,7 +1378,7 @@ img {
       padding-left: 0px;
     }
   }
-}
+
 
 .nav h2 a {
   font-size: 15px;
@@ -1421,6 +1421,7 @@ img {
     padding: 3px 10px;
   }
 }
+}
 
 @media (min-width: 632px) and (max-width: 742px) {
   .header {
@@ -1449,7 +1450,7 @@ img {
       width: 50%;
     }
   }
-}
+
 
 .details {
   &-image {
@@ -1473,6 +1474,7 @@ img {
   &-screenshot ul li img {
     width: 50%;
   }
+}
 }
 
 @media (min-width: 743px) and (max-width: 1019px) {
@@ -1800,4 +1802,17 @@ img {
   content: "\f004";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
+}
+
+.favorites{
+
+  &-user{
+    font-size: 30px;
+    color: #d0aada;
+    font-weight: bold;
+    margin-left: 40px;
+    margin-top: 40px;
+    text-shadow:
+    0 0 42px #a404b3,
+  }
 }

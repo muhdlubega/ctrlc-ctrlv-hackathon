@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../../firebase'
 import AuthModal from '../Login/AuthModal'
-import AuthDetails from '../Login/AuthDetails'
 
 const Navbar = () => {
   const handleShift = () => {
@@ -18,7 +17,6 @@ const Navbar = () => {
         <h2><Link to='/about' onClick={handleShift}>About</Link></h2>
         <h2><Link to='/account' onClick={handleShift}>Account</Link></h2>
         <AuthModal/>
-        <AuthDetails/>
         
 
 </div>
