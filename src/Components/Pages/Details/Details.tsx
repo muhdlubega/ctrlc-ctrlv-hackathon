@@ -185,7 +185,7 @@ function Details() {
       <div className="details-content-skew">
       <table className="game-name">
         <tr>
-          <div className="details-title">{gameDetails?.name} <button>+</button></div>
+          <div className="details-title">{gameDetails?.name}</div>
         </tr>
         <tr>
           <table>

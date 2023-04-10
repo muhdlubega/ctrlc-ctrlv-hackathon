@@ -28,6 +28,7 @@ function Games() {
   const [searchResults, setSearchResults] = useState<GameItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+  const [favorites, setFavorites] = useState<GameItem[]>([]); // new state for favorite games
 
   const getGamesNames = () => {
     setLoading(true);
@@ -60,6 +61,7 @@ function Games() {
     })
   }
 
+
   const getSearchItem = () => {
     getGamesSearch({ search: searchInput }).then((output) => {
       setSearchResults(output?.data?.results);
@@ -88,56 +90,90 @@ function Games() {
     getGamesNames();
   }
 
+  const handleFavorite = (game: GameItem) => {
+    if (favorites.includes(game)) {
+      setFavorites(favorites.filter((f) => f !== game));
+      console.log(`Removed ${game.name} from favorites`);
+    } else {
+      setFavorites([...favorites, game]);
+      console.log(`Added ${game.name} to favorites`);
+    }
+  };
+  
+
+  // update button text based on whether the game is in favorites
+  const getButtonText = (game: GameItem) => {
+    return favorites.includes(game) ? 'Remove from favorites' : 'Add to favorites';
+  };
   useEffect(() => {
     getGamesNames();
   }, [sortMethod]);
 
   return (
-    
     <div>
       <div className='homepage-top'>
-      <div className='sort-group'>
-      <label htmlFor='sort-select' className='sort-text'>Sort by:</label>
-      <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}>
-        <option value={SortMethod.PopularityHigh}>Popularity</option>
-        <option value={SortMethod.AlphabeticalHigh}>Alphabetical</option>
-        <option value={SortMethod.RatingHigh}>User Rating</option>
-        <option value={SortMethod.MetaHigh}>Metacritic Score</option>
-        <option value={SortMethod.ReleaseHigh}>Date Released</option>
-        <option value={SortMethod.DateHigh}>Date Created</option>
-      </select>
-    </div>
-    <div className="game-list-container">
-      <div className="search-container">
-        <input
-          type="text"
-          value={searchInput}
-          onChange={(event) => setSearchInput(event.target.value)}
-          placeholder="Search for games..."
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
-    </div>
+        <div className='sort-group'>
+          <label htmlFor='sort-select' className='sort-text'>
+            Sort by:
+          </label>
+          <select
+            id='sort-select'
+            className='sort-select'
+            onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}>
+            <option value={SortMethod.PopularityHigh}>Popularity</option>
+            <option value={SortMethod.AlphabeticalHigh}>Alphabetical</option>
+            <option value={SortMethod.RatingHigh}>User Rating</option>
+            <option value={SortMethod.MetaHigh}>Metacritic Score</option>
+            <option value={SortMethod.ReleaseHigh}>Date Released</option>
+            <option value={SortMethod.DateHigh}>Date Created</option>
+          </select>
+        </div>
+        <div className='game-list-container'>
+          <div className='search-container'>
+            <input
+              type='text'
+              value={searchInput}
+              onChange={(event) => setSearchInput(event.target.value)}
+              placeholder='Search for games...'
+            />
+            <button onClick={handleSearch}>Search</button>
+          </div>
+        </div>
       </div>
       <div className='content'>
-        {gamesArray.map((game: GameItem) => ( //map your output
-        <div>
-        {loading && <div><img style={{height:50, margin:20}} src={myGif} alt="Loading...." /></div>}
-        {!loading &&
-          <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
-            <img className='game-image' alt={'game item'} src={game?.background_image} onError={(e) => {
-                              e.currentTarget.src = placeholder;
-                            }}></img>
-            <div className='game-name'>{game?.name}</div>
-          </div>
-          }
+        {gamesArray.map((game: GameItem) => (
+          <div>
+            {loading && (
+              <div>
+                <img style={{ height: 50, margin: 20 }} src={myGif} alt='Loading....' />
+              </div>
+            )}
+            {!loading && (
+              <div className='game-item' key={game?.name} onClick={() => navigate(`/details/${game.id}`)}>
+                <img
+                  className='game-image'
+                  alt={'game item'}
+                  src={game?.background_image}
+                  onError={(e) => {
+                    e.currentTarget.src = placeholder;
+                  }}
+                ></img>
+                <div className='game-name'>{game?.name}</div>
+                <button onClick={(e) => { e.stopPropagation(); handleFavorite(game); }}>
+                  {getButtonText(game)}
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
-      <div className='load-more'><button className='button-resp' onClick={handleLoadMore}>Load More</button></div>
+      <div className='load-more'>
+        <button className='button-resp' onClick={handleLoadMore}>
+          Load More
+        </button>
+      </div>
     </div>
-
-  )
+  );
 }
 
 export default Games
