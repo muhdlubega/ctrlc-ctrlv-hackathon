@@ -16,11 +16,14 @@ const SearchResults = () => {
 
   useEffect(() => {
     getGamesNames();
+  }, [searchQuery]);
+
+  useEffect(() => {
     const element = document.getElementById("details-container");
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }
-  }, [searchQuery]);
+  }, [])
 
   const getGamesNames = () => {
     getGamesSearch({ search: searchQuery }).then((output) => {

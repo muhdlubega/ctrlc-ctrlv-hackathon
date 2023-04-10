@@ -127,11 +127,14 @@ function Details() {
     fetchGameAdditions();
     fetchGameStores();
     fetchGameScreenshots();
+  },[]);
+
+  useEffect(() => {
     const element = document.getElementById("details-container");
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }
-  },[]);
+  }, []);
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
