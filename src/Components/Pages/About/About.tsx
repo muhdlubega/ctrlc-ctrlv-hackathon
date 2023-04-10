@@ -1,9 +1,9 @@
 import React from "react";
-import FarhahPic from "../../../Assets/images/FarhahVG.png";
-import BegaPic from "../../../Assets/images/BegaVG.png";
-import PremPic from "../../../Assets/images/PremVG.png";
-import IkmalPic from "../../../Assets/images/IkmalVG.png";
-import YuvaPic from "../../../Assets/images/YuvaVG.png";
+import FarhahPic from "../../../Assets/image/FarhahVG.png";
+import BegaPic from "../../../Assets/image/BegaVG.png";
+import PremPic from "../../../Assets/image/PremVG.png";
+import IkmalPic from "../../../Assets/image/IkmalVG.png";
+import YuvaPic from "../../../Assets/image/YuvaVG.png";
 
 function About() {
   return (

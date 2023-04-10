@@ -320,6 +320,7 @@
     text-shadow: 2px 4px 4px rgba(46,91,173,0.8);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: whitesmoke;
+    transition: 0.3s;
 
     &:hover {
       transform: scale(1.2);
@@ -1030,6 +1031,14 @@ margin:30px;
     text-align: center;
     margin: 0 70px;
   }
+
+}
+
+.hourglass {
+  height:20rem; 
+  margin: 50%;
+}
+
 } 
 .alert {
   background-color: white;
@@ -1129,3 +1138,4 @@ margin:30px;
   background-color: rgb(134, 134, 134);
   color: #ffffff;
 }
+
