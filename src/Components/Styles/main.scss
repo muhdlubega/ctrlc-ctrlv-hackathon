@@ -482,6 +482,7 @@ box-shadow: 0px 0px 50px #a404b3;
   &-image{
     height: 30rem;
     margin: 20px;
+    max-width: 100%;
     -moz-box-shadow: 0 0 50px #a404b3;
 -webkit-box-shadow: 0 0 50px #a404b3;
 box-shadow: 0px 0px 50px #a404b3;
@@ -593,11 +594,19 @@ margin:30px;
   display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 1rem;
     &-skew{
       transform: perspective(1000px) rotateY(2deg);
       transition: transform 1.5s ease 1s;
+      display: flex;
+      justify-content: center;
       &:hover{
         transform: none;
+      }
+      table{
+        display: flex;
+    flex-direction: column;
+    align-items: center;
       }
     }
 }
@@ -640,13 +649,6 @@ margin:30px;
     }
   }
 }
-
-// @media screen and (max-width: 768px) {
-//   .game-name {
-//     display: table;
-//     width: auto;
-//   }
-// }
 
 .percentage{
   color: #a404b3;
@@ -714,7 +716,6 @@ margin:30px;
     height: 9rem;
     &:hover{
       transform: scale(1.1);
-      cursor: pointer;
   -moz-box-shadow: 0 0 10px #a404b3;
   -webkit-box-shadow: 0 0 10px #a404b3;
   box-shadow: 0px 0px 10px #a404b3;
@@ -1035,4 +1036,95 @@ margin:30px;
   color: black;
   padding: 10px;
   border-radius: 5px;
+.screenshot-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}}
+
+.screenshot-popup img {
+  max-height: 80vh;
+  max-width: 80vw;
+}
+
+.screenshot-popup button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 90%;
+  margin-top: 10px;
+}
+
+.slider img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.arrows button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+
+.arrows button:first-child {
+  left: 10px;
+  position: relative;
+}
+
+.arrows button:last-child {
+  right: 10px;
+}
+
+.close-btn {
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  position: relative;
+}
+.close-btn:hover {
+  cursor: pointer;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(134, 134, 134);
+  color: #ffffff;
 }
