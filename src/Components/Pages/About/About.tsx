@@ -4,94 +4,100 @@ import BegaPic from "../../../Assets/images/BegaVG.png";
 import PremPic from "../../../Assets/images/PremVG.png";
 import IkmalPic from "../../../Assets/images/IkmalVG.png";
 import YuvaPic from "../../../Assets/images/YuvaVG.png";
-// import{ motion } from "../../Styles/main.scss";
 
 function About() {
   return (
     <>
-      <h2>Meet The Team</h2>
-      <br />
-    <div className="bio-main">
       <div className="bio-wrapper">
-        <div className="bio-container">
-          <div className="bio">
-            <img src={FarhahPic} />
-
-            <div className="detail">
-              <h2>Farhah Nizam</h2>
-              <p className="position">CEO & Founder</p>
-              <p>If I was funny, I would have a good 'about' bio</p>
-              <button className="button-contacts"> Contact</button>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div className="bio-container">
-          <div className="bio">
-            <img src={BegaPic} />
-
-            <div className="detail">
-              <h2>Lubega</h2>
-              <p className="position">Art Director</p>
-              <p>Good stuff</p>
-              <button className="button-contacts">Contact</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <div className="bio-container">
-          <div className="bio">
-            <img src={PremPic} className="img"/>
-
-            <div className="detail">
-              <h2>Prem</h2>
-              <p className="position">Art Director</p>
-              <p>Optimus Prem.</p>
-              <button className="button-contacts">Contact</button>
-            </div>
-          </div>
-        </div>
-
-        <div className="bio-container">
-          <div className="bio">
-            <img src={IkmalPic} />
-
-            <div className="detail">
-              <h2>Ikmal</h2>
-              <p className="position">Art Director</p>
-              <p>I'm sleepy</p>
-              <button className="button-contacts">Contact</button>
-            </div>
-          </div>
-        </div>
-      
-
-        <div className="bio-container">
-          <div className="bio">
-            <img src={YuvaPic} />
-
-            <div className="detail">
-              <h2>Yuva</h2>
-              <p className="position">Art Director</p>
-              <p>I'm shy</p>
-              <button className="button-contacts">Contact</button>
-            </div>
-          </div>
-        </div>
-    
-
-
-      <h2>About Us</h2>
-
-      <div className="detail">
-        <p>
+        <h1 className="title">User Profile Card</h1>
+        <br />
+        <p className="sub">
           We are a team of passionate designers and developers who love creating
           beautiful and functional video game websites. Our mission is to be the
           very best like no one ever was.
         </p>
         <br />
 
+        <div className="card">
+          <div className="bio-container">
+            <div className="bio">
+              <img className="picture" src={FarhahPic} />
+              <div className="detail">
+                <h2>Farhah Nizam</h2>
+                <p className="position">CEO & Founder</p>
+                <p>Not funny</p>
+                <br />
+                <a href="https://www.linkedin.com/">
+                  <i className="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bio-container">
+            <div className="bio">
+              <img className="picture" src={BegaPic} />
+              <div className="detail">
+                <h2>Lubega</h2>
+                <p className="position">Art Director</p>
+                <p>Good stuff</p>
+                <br />
+                <a href="https://www.linkedin.com/">
+                  <i className="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bio-container">
+            <div className="bio">
+              <img className="picture" src={PremPic} />
+              <div className="detail">
+                <h2>Prem</h2>
+                <p className="position">Art Director</p>
+                <p>Optimus Prem</p>
+                <br />
+                <a href="https://www.linkedin.com/">
+                  <i className="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bio-container">
+            <div className="bio">
+              <img className="picture" src={IkmalPic} />
+
+              <div className="detail">
+                <h2>Ikmal</h2>
+                <p className="position">Art Director</p>
+                <p>I'm sleepy</p>
+                <br />
+                <a href="https://www.linkedin.com/">
+                  <i className="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bio-container">
+            <div className="bio">
+              <img className="picture" src={YuvaPic} />
+              <div className="detail">
+                <h2>Yuva</h2>
+                <p className="position">Art Director</p>
+                <p>I'm shy</p>
+                <br />
+                <a href="https://www.linkedin.com/">
+                  <i className="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="info">
         <h2>Build on RAWG API</h2>
         <p>
           Build on the ultimate gameplay resource, the RAWG API! It has over
@@ -112,7 +118,7 @@ function About() {
           imitate us, though. Do you need assistance? Contact us at api@rawg.io
         </p>
       </div>
-  </>
+    </>
   );
 }
 

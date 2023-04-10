@@ -30,8 +30,8 @@ function Genres() {
 
   return (
     <div>
-      <div className="topic">Genres:</div>
-      <div className="genregroup" id="genreidsec">
+      <div className="details-title">Genres:</div>
+      <div className="genregroup">
         {First4?.map((i: Genre) => {
           return (
             <button className={`details-${i?.name?.toLowerCase()}`} onClick={() => {navigate(`/genres/${i?.id}`)}}>
