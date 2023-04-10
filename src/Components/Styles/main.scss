@@ -736,3 +736,127 @@ margin:30px;
     padding: 10px;
   }
 }
+
+// Profile card
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.bio-wrapper {
+  background-color: #22161c;
+
+  .title {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .sub {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 70px;
+
+    @media (max-width: 768px) {
+      margin: 0 10px;
+      line-height: 25px;
+    }
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 0 30px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    overflow: hidden;
+
+    // mobile device
+    @media (max-width: 768px) {
+      grid-template-columns: auto;
+    }
+
+    // ipads and tablet
+    @media (min-width: 769px) {
+      grid-template-columns: auto auto;
+    }
+
+    // laptops and small screen
+    @media (min-width: 1025px) {
+      grid-template-columns: auto auto auto;
+    }
+
+    .bio-container {
+      margin: 15px;
+      text-align: center;
+      background-color: white;
+      padding: 15px;
+      border-radius: 30px;
+      min-width: 300px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+      &:hover {
+        background-color: lightblue;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        left: -30px;
+        
+
+        .picture {
+          width: 250px;
+          height: 250px;
+        }
+      }
+
+      .picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    .detail {
+      h2 {
+        color: black;
+        font-size: 40px;
+        text-align: center;
+      }
+      p {
+        color: black;
+        font-size: 20px;
+        text-align: center;
+        margin: 0 70px;
+      }
+
+      // link for LinkedIn
+      a {
+        text-decoration: none;
+        font-size: 22px;
+        color: black;
+
+        i {
+          font-size: 30px;
+          color: #0a66c2;
+        }
+      }
+    }
+  }
+}
+
+.info {
+  padding: 20px;
+
+  h2 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+  }
+  p {
+    line-height: 30px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 70px;
+  }
+}
