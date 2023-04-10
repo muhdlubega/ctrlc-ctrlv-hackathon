@@ -9,7 +9,7 @@ function About() {
   return (
     <>
       <div className="bio-wrapper">
-        <h1 className="title">User Profile Card</h1>
+        <h1 className="title">Meet Our Team!</h1>
         <br />
         <p className="sub">
           We are a team of passionate designers and developers who love creating
@@ -25,7 +25,7 @@ function About() {
               <div className="detail">
                 <h2>Farhah Nizam</h2>
                 <p className="position">CEO & Founder</p>
-                <p>Not funny</p>
+                <p>Need coffee</p>
                 <br />
                 <a href="https://www.linkedin.com/">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
@@ -39,7 +39,7 @@ function About() {
               <img className="picture" src={BegaPic} />
               <div className="detail">
                 <h2>Lubega</h2>
-                <p className="position">Art Director</p>
+                <p className="position">API Engineer</p>
                 <p>Good stuff</p>
                 <br />
                 <a href="https://www.linkedin.com/">
@@ -54,7 +54,7 @@ function About() {
               <img className="picture" src={PremPic} />
               <div className="detail">
                 <h2>Prem</h2>
-                <p className="position">Art Director</p>
+                <p className="position">Web Designer</p>
                 <p>Optimus Prem</p>
                 <br />
                 <a href="https://www.linkedin.com/">
@@ -70,7 +70,7 @@ function About() {
 
               <div className="detail">
                 <h2>Ikmal</h2>
-                <p className="position">Art Director</p>
+                <p className="position">Technical Support</p>
                 <p>I'm sleepy</p>
                 <br />
                 <a href="https://www.linkedin.com/">
@@ -85,7 +85,7 @@ function About() {
               <img className="picture" src={YuvaPic} />
               <div className="detail">
                 <h2>Yuva</h2>
-                <p className="position">Art Director</p>
+                <p className="position">Firebase Specialist</p>
                 <p>I'm shy</p>
                 <br />
                 <a href="https://www.linkedin.com/">

@@ -41,10 +41,10 @@ const AuthDetails = () => {
   };  
 
   return (
-    <div>
+    <div className='auth-button-cont'>
       {authUser ? (
         <>
-          <h3 style={{ color: 'white' }}>{`Signed In as ${authUser.email}`}</h3>
+          {/* <h3 style={{ color: 'white' }}>{`Signed In as ${authUser.email}`}</h3> */}
           <a className="auth-button" onClick={userSignOut}>Sign Out</a>
         </>
       ) : (
