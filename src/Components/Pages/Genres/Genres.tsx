@@ -30,7 +30,7 @@ function Genres() {
 
   return (
     <div>
-      <div className="topic">Genres:</div>
+      <div className="details-title">Genres:</div>
       <div className="genregroup">
         {First4?.map((i: Genre) => {
           return (
