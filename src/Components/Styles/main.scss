@@ -317,6 +317,7 @@
   flex-wrap: wrap;
 
   button {
+    cursor: pointer;
     padding: 50px;
     margin: 15px auto 15px auto;
     width: 512px;
@@ -333,8 +334,11 @@
     -webkit-text-stroke-color: whitesmoke;
 
     &:hover {
-      transform: scale(1.5);
+      transform: scale(1.2);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0 0 50px #a404b3;
+-webkit-box-shadow: 0 0 50px #a404b3;
+box-shadow: 0px 0px 50px #a404b3;
     }
   }
 }
@@ -428,7 +432,7 @@
     background-repeat: no-repeat;
   }
 
-  &-massivelymultiplayer {
+  &-massively {
     background-image: url("https://media.rawg.io/media/games/34b/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg");
     background-color: #1E1D1D;
     background-size: cover;
@@ -437,7 +441,7 @@
   }
 
   &-sports {
-    background-image: url("https://media.rawg.io/media/games/0c1/0c1c9965ba59166ab986a663ab2252dc.jpg");
+    background-image: url("https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/05/best-sports-games-fifa-23.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -457,8 +461,8 @@
     background-repeat: no-repeat;
   }
 
-  &-boardgames {
-    background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cnbc.com%2F2016%2F12%2F22%2Fmillennials-the-board-games-revival-catan-pandemic.html&psig=AOvVaw3zAC-iR1fMk_akLrJkdx55&ust=1681027890325000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKjGlYjrmf4CFQAAAAAdAAAAABAD");
+  &-board {
+    background-image: url("https://media.timeout.com/images/105627949/image.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
