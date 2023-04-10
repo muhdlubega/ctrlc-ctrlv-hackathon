@@ -16,6 +16,10 @@ const SearchResults = () => {
 
   useEffect(() => {
     getGamesNames();
+    const element = document.getElementById("details-container");
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
   }, [searchQuery]);
 
   const getGamesNames = () => {
@@ -26,7 +30,7 @@ const SearchResults = () => {
 
   return (
     <div className="game-name">
-      <div className="search-query">Showing results for "{searchQuery}"</div>
+      <div  id='details-container' className="search-query">Showing results for "{searchQuery}"</div>
 
       <div className="content">
         {searchResults.map((game: GameItem) => (
