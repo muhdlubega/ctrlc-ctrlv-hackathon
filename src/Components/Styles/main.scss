@@ -703,6 +703,7 @@ margin:30px;
   width: 100%;
   display: inline-block;
   word-wrap: break-word;
+  color: white;
   tbody{
     margin-top: 30px;
     display: flex;
@@ -719,6 +720,13 @@ margin:30px;
       font-size: 1.2rem;
     }
     td{
+      color:white;
+      div{
+        color: white;
+      }
+      p{
+        color:white;
+      }
       a{
         color: #a404b3;
   text-decoration: none;

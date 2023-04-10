@@ -5,65 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import PercentageWheel from "./Metacritic";
 import ratingToStars from "./UserRatings";
 import placeholder from '../../../Assets/image/placeholder.svg';
-import spark from '../../../Assets/image/sparks.gif';
-
-interface GameDetails {
-  name?: string;
-  metacritic?: number;
-  rating?: number;
-  ratings?:{
-    title?:string;
-    percent?:number;
-  }[];
-  esrb_rating?: {name:string};
-  website?: string;
-  reddit_url?: string;
-  genres?: {name:string, id:number}[];
-  developers?: {name:string, id:number}[];
-  publishers?: {name:string, id:number}[];
-  released?: string;
-  playtime?: string;
-  description?: string;
-  background_image?: string;
-  max?: string;
-  data: {
-    max?: number;
-  };
-  platforms?: {
-    platform?: {
-      name: string;
-    };
-    requirements: {
-      minimum?:string;
-    recommended?:string
-  };
-  }[];
-  gameTrailers?: {
-    results?: {
-      data?: {
-        max?: string;
-      };
-    }[];
-  };
-  gameAdditions?: {
-    results?: {
-      background_image?: string;
-      name?: string;
-    }[];
-  };
-  gameStores?: {
-    results?: {
-      id?: number;
-      url?: string;
-    }[];
-  };
-  gameScreenshots: {
-    results: {
-      id?: number;
-      image?: string;
-    }[];
-  };
-}
+import { GameDetails } from "../../Typescript/MainTypescript";
 
 
 function Details() {

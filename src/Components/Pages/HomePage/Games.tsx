@@ -8,22 +8,8 @@ import { useFavoriteGames } from '../../States/FavoritesContext';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-
-
-interface GameItem {
-  name: string;
-  background_image: string;
-  id: number;
-}
-
-enum SortMethod {
-  Popularity = 'Popularity',
-  Alphabetical = 'Alphabetical',
-  Rating = 'Rating',
-  Meta = 'Meta',
-  Release = 'Release',
-  Date = 'Date',
-}
+import { GameItem } from '../../Typescript/MainTypescript';
+import { SortMethod } from '../../Typescript/MainTypescript';
 
 function Games() {
   const [gamesArray, setGamesArray] = useState<GameItem[]>([]);

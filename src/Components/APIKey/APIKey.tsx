@@ -1,10 +1,5 @@
 import axios from "axios";
-
-export type Query = {
-  page?: number;
-  search?: string;
-  platform?: number;
-}
+import {Query} from "../Typescript/MainTypescript";
 
 const BASE_URL = "https://api.rawg.io/api/games";
 const API_KEY = "012299a1f3f64ced87ec0b4bef924ccc";

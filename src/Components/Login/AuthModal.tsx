@@ -6,15 +6,10 @@ import Account from '../Pages/Account/Account';
 import { Route, Routes } from 'react-router-dom';
 import { AuthContextProvider } from '../Pages/Account/AuthContext';
 import ProtectedRoute from '../Pages/Account/ProtectedRoute';
+import { LoginProps } from "../Typescript/MainTypescript";
+import { RegisterProps} from "../Typescript/MainTypescript";
 
-// Define types for props
-interface LoginProps {
-  handleClose: () => void;
-}
 
-interface RegisterProps {
-  handleClose: () => void;
-}
 
 // Component for login form
 function Login(props: LoginProps) {

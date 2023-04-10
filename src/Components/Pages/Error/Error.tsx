@@ -3,9 +3,9 @@ import amogus from '../../../Assets/image/amogus.gif';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-function NotFoundPage() {
-  useEffect(() => {
-    const element = document.getElementById("details-container");
+function NotFoundPage() { // React component that represents the 404 error page
+  useEffect(() => { // 
+    const element = document.getElementById("details-container"); // retrieve the element with id "details-container"
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }

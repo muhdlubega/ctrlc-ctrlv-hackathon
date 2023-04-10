@@ -2,21 +2,9 @@ import { useEffect, useState, useMemo } from 'react';
 import { getGenreSortPopularity, getGenreSortAlphabetical, getGenreSortRating, getGenreSortMeta, getGenreSortRelease, getGenreSortDate} from '../../APIKey/APIKey';
 import '../../Styles/main.scss';
 import { useNavigate, useParams } from 'react-router-dom';
+import { GameItem } from '../../Typescript/MainTypescript';
+import { SortMethod } from '../../Typescript/MainTypescript';
 
-interface GameItem {
-  name: string;
-  background_image: string;
-  id: number;
-}
-
-enum SortMethod {
-  Popularity = 'Popularity',
-  Alphabetical = 'Alphabetical',
-  Rating = 'Rating',
-  Meta = 'Meta',
-  Release = 'Release',
-  Date = 'Date',
-}
 
 function GenreGames() {
   const [gamesArray, setGamesArray] = useState<GameItem[]>([]);
@@ -25,7 +13,7 @@ function GenreGames() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortMethod, setSortMethod] = useState<SortMethod>(SortMethod.Popularity);
 
-  const getGamesNames = useMemo(() => {
+  const getGamesNames = useMemo(() => { //Sorting function
     switch (sortMethod) {
       case SortMethod.Popularity:
         return getGenreSortPopularity;
@@ -44,14 +32,14 @@ function GenreGames() {
     }
   }, [sortMethod]);
 
-  const fetchGames = () => {
-    let promise = getGamesNames({ page: currentPage }, id!);
+  const fetchGames = () => { // Fetch data from API with a promise
+    let promise = getGamesNames({ page: currentPage }, id!); 
     promise.then(output => {
       setGamesArray([...gamesArray, ...output?.data?.results])
     })
   }
 
-  const handleLoadMore = () => {
+  const handleLoadMore = () => { // Load more games
     setCurrentPage(currentPage + 1);
   }
 
@@ -79,7 +67,7 @@ function GenreGames() {
   return (
     <div>
       <div className='sort-group'>
-      <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}>
+      <select id='sort-select' className='sort-select' onChange={(event) => handleSort(SortMethod[event.target.value as keyof typeof SortMethod])}> {/*Sorting Options*/}
         <option value={''} disabled selected>Select Sorting Option</option>
         <option value={SortMethod.Popularity}>Popularity</option>
         <option value={SortMethod.Alphabetical}>Alphabetical</option>
@@ -89,8 +77,8 @@ function GenreGames() {
         <option value={SortMethod.Date}>Date Created</option>
       </select>
     </div>
-      <div className='content'>
-        {gamesArray.map((game: GameItem) => (
+      <div className='content'> {/*Display Games*/}
+        {gamesArray.map((game: GameItem) => ( 
           <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
             <img className='game-image' alt={'game item'} src={game?.background_image}></img>
             <div className='game-name'>{game?.name}</div>
