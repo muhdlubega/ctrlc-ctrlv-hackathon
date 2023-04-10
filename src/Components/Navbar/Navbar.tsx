@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className='nav'>
         <h2><Link to='/' onClick={handleShift}>Home</Link></h2>
-        <h2><Link to='/genres' onClick={handleShift}>Genre</Link></h2>
+        <h2><Link to='/genres' onClick={handleShift}>Genres</Link></h2>
         <h2><Link to='/about' onClick={handleShift}>About</Link></h2>
         <h2><Link to='/account' onClick={handleShift}>Account</Link></h2>
         <AuthModal/>
