@@ -214,13 +214,13 @@ function Details() {
                   )}
                   <tr>
                     <th>Game Website</th>
-                    <td>
+                    <td className="link-cont">
                     <a href={gameDetails?.website} target="_blank" rel="noopener noreferrer">{gameDetails?.website}</a>
                     </td>
                   </tr>
                   <tr>
                     <th>Game Subreddit</th>
-                    <td>
+                    <td className="link-cont">
                     <a href={gameDetails?.reddit_url} target="_blank" rel="noopener noreferrer">{gameDetails?.reddit_url}</a>
                     </td>
                   </tr>
