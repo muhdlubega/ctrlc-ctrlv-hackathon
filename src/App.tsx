@@ -13,8 +13,7 @@ const LazyGenres = lazy(() => import("./Components/Pages/Genres/Genres"));
 const LazyGenreGames = lazy(() => import("./Components/Pages/GenreGames/GenreGames"));
 const LazyAccount = lazy(() => import("./Components/Pages/Account/Account"));
 const LazySearch = lazy(() => import("./Components/Pages/Search/SearchResults"));
-
-
+const LazyError = lazy(() => import("./Components/Pages/Error/Error"));
 
 function App() {
   return (
@@ -29,12 +28,11 @@ function App() {
         <Route path="/genres/:id" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyGenreGames /></Suspense>}></Route>
         <Route path="/account" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyAccount /></Suspense>}></Route>
         <Route path="/search/:searchQuery" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazySearch /></Suspense>}/>
+        <Route path="*" element={<Suspense fallback={<div>Loading....</div>}><LazyError /></Suspense>}/>
       </Routes>
       <Footer></Footer>
       </Layout>
       </AppWrapper>
-      {/* </Layout>
-      </AppWrapper> */}
     </BrowserRouter>
   );
 }
