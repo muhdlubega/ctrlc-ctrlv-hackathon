@@ -21,14 +21,14 @@ function App() {
     <AppWrapper>
       <Layout>
       <Routes>
-        <Route path="/" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyHomePage /></Suspense>}></Route>
-        <Route path="/details/:id" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyDetails /></Suspense>}></Route>
-        <Route path="/about" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyAbout /></Suspense>}></Route>
-        <Route path="/genres" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyGenres /></Suspense>}></Route>
-        <Route path="/genres/:id" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyGenreGames /></Suspense>}></Route>
-        <Route path="/account" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazyAccount /></Suspense>}></Route>
-        <Route path="/search/:searchQuery" element={<Suspense fallback={<img src={myGif} alt="Loading...." />}><LazySearch /></Suspense>}/>
-        <Route path="*" element={<Suspense fallback={<div>Loading....</div>}><LazyError /></Suspense>}/>
+        <Route path="/" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyHomePage /></Suspense>}></Route>
+        <Route path="/details/:id" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyDetails /></Suspense>}></Route>
+        <Route path="/about" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyAbout /></Suspense>}></Route>
+        <Route path="/genres" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyGenres /></Suspense>}></Route>
+        <Route path="/genres/:id" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyGenreGames /></Suspense>}></Route>
+        <Route path="/account" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyAccount /></Suspense>}></Route>
+        <Route path="/search/:searchQuery" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazySearch /></Suspense>}/>
+        <Route path="*" element={<Suspense fallback={<img className='hourglass' src={myGif} alt="Loading...." />}><LazyError /></Suspense>}/>
       </Routes>
       <Footer></Footer>
       </Layout>

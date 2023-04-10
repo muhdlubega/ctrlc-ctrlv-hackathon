@@ -7,7 +7,7 @@ export type Query = {
 }
 
 const BASE_URL = "https://api.rawg.io/api/games";
-const API_KEY = "bf4ec562d6994c3481633dc1fddab06b";
+const API_KEY = "012299a1f3f64ced87ec0b4bef924ccc";
 const PAGE_SIZE = 40;
 
 //API Keys for searching functionalities
