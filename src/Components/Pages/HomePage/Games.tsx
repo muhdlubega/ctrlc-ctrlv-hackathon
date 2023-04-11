@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import myGif from '../../../Assets/image/loading.gif';
 import placeholder from '../../../Assets/image/placeholder.svg';
 import { useFavoriteGames } from '../../States/FavoritesContext';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { GameItem } from '../../Typescript/MainTypescript';

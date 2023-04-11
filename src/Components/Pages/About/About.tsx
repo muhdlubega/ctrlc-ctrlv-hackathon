@@ -24,10 +24,10 @@ function About() {
               <img className="picture" src={FarhahPic} />
               <div className="detail">
                 <h2>Farhah Nizam</h2>
-                <p className="position">CEO & Founder</p>
+                <p className="position">CEO/Founder</p>
                 <p>Need coffee</p>
                 <br />
-                <a href="https://www.linkedin.com/">
+                <a href="https://www.linkedin.com/in/farhah-nizam/">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
               </div>
@@ -42,7 +42,7 @@ function About() {
                 <p className="position">API Engineer</p>
                 <p>Good stuff</p>
                 <br />
-                <a href="https://www.linkedin.com/">
+                <a href="https://www.linkedin.com/in/muhammad-lubega/">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
               </div>
@@ -57,7 +57,7 @@ function About() {
                 <p className="position">Web Designer</p>
                 <p>Optimus Prem</p>
                 <br />
-                <a href="https://www.linkedin.com/">
+                <a href="https://www.linkedin.com/in/prem-koomar-a9920a226/">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
               </div>
@@ -73,7 +73,7 @@ function About() {
                 <p className="position">Technical Support</p>
                 <p>I'm sleepy</p>
                 <br />
-                <a href="https://www.linkedin.com/">
+                <a href="https://www.linkedin.com/in/ikmal-fadhil-86133b19a/">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
               </div>
@@ -88,7 +88,7 @@ function About() {
                 <p className="position">Firebase Specialist</p>
                 <p>I'm shy</p>
                 <br />
-                <a href="https://www.linkedin.com/">
+                <a href="https://www.linkedin.com/in/yuvaraj-elamko/">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
               </div>
