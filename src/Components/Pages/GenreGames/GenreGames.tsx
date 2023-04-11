@@ -4,6 +4,7 @@ import '../../Styles/main.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GameItem } from '../../Typescript/MainTypescript';
 import { SortMethod } from '../../Typescript/MainTypescript';
+import { useFavoriteGames } from '../../States/FavoritesContext';
 
 
 function GenreGames() {
@@ -12,6 +13,8 @@ function GenreGames() {
   const {id} = useParams<{id: string}>();
   const [currentPage, setCurrentPage] = useState(1);
   const [sortMethod, setSortMethod] = useState<SortMethod>(SortMethod.Popularity);
+  const [favorites, setFavorites] = useState<GameItem[]>([]); // new state for favorite games
+  const { favoriteGames, addGameToFavorite, removeGameFromFavorite } = useFavoriteGames();
 
   const getGamesNames = useMemo(() => { //Sorting function
     switch (sortMethod) {
@@ -64,6 +67,21 @@ function GenreGames() {
     fetchGames();
   }, [currentPage]);
 
+  const handleFavorite = (game: GameItem) => {
+    const gameTitle = game.name;
+  
+    if (favoriteGames.includes(gameTitle)) {
+      removeGameFromFavorite(gameTitle);
+    } else {
+      addGameToFavorite(gameTitle);
+    }
+  };
+  
+  const getButtonText = (game: GameItem) => {
+    const gameTitle = game.name;
+    return favoriteGames.includes(gameTitle) ? '❤️' : '♡';
+  };
+
   return (
     <div>
       <div className='sort-group'>
@@ -81,7 +99,12 @@ function GenreGames() {
         {gamesArray.map((game: GameItem) => ( 
           <div className='game-item' key={game?.name} onClick={()=>{navigate(`/details/${game.id}`)}}>
             <img className='game-image' alt={'game item'} src={game?.background_image}></img>
-            <div className='game-name'>{game?.name}</div>
+            <span className='game-span'>
+                <span className='game-spantitle'>{game?.name}</span>
+                <button className='fave-button' onClick={(e) => { e.stopPropagation(); handleFavorite(game); }}>
+                  {getButtonText(game)}
+                </button>
+                </span>
           </div>
         ))}
       </div>

@@ -3,10 +3,13 @@ import { getGamesSearch } from '../../APIKey/APIKey';
 import '../../Styles/main.scss';
 import { useEffect, useState } from 'react';
 import { GameItem } from '../../Typescript/MainTypescript';
+import { useFavoriteGames } from '../../States/FavoritesContext';
 
 const SearchResults = () => {
   const { searchQuery } = useParams<{ searchQuery: string }>();
   const [searchResults, setSearchResults] = useState<GameItem[]>([]);
+  const [favorites, setFavorites] = useState<GameItem[]>([]); // new state for favorite games
+  const { favoriteGames, addGameToFavorite, removeGameFromFavorite } = useFavoriteGames();
   const navigate = useNavigate();
 
   useEffect(() => { // Fetch game search results whenever the 'searchQuery' parameter changes in the URL
@@ -26,6 +29,21 @@ const SearchResults = () => {
     });
   };
 
+  const handleFavorite = (game: GameItem) => {
+    const gameTitle = game.name;
+  
+    if (favoriteGames.includes(gameTitle)) {
+      removeGameFromFavorite(gameTitle);
+    } else {
+      addGameToFavorite(gameTitle);
+    }
+  };
+  
+  const getButtonText = (game: GameItem) => {
+    const gameTitle = game.name;
+    return favoriteGames.includes(gameTitle) ? '❤️' : '♡';
+  };
+
   return (
     <div className="game-name">
       <div  id='details-container' className="details-title">Showing results for "{searchQuery}"</div>
@@ -42,7 +60,12 @@ const SearchResults = () => {
               alt={"game results"}
               src={game?.background_image}
             ></img>
-            <div className="game-name">{game?.name}</div>
+            <span className='game-span'>
+                <span className='game-spantitle'>{game?.name}</span>
+                <button className='fave-button' onClick={(e) => { e.stopPropagation(); handleFavorite(game); }}>
+                  {getButtonText(game)}
+                </button>
+                </span>
           </div>
         ))}
       </div>
